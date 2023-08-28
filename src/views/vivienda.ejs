@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viviendas</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <style>
+        /* Estilo personalizado para alinear los elementos desde la derecha */
+        .navbar-nav {
+            margin-left: auto;
+            flex-direction: row-reverse;
+        }
+        .nav-item {
+            margin-right: .5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Taller CRUD iTalento</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/departamento">Departamento</a>
+                  </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/persona">Personas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/municipio">Municipios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/vivienda">Vivienda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/propietario">Propietarios</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="card m-4 mx-auto" style="max-width: 500px;">
+      <div class="card-body">
+        <form class="m-4" action="/add" method="post">
+          <fieldset>
+            <legend style="text-align: center;">Viviendas</legend>
+            <div class="form-group row">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputVivienda1" class="form-label mt-4">Escribe la direccion de la vivienda</label>
+              <input type="vivienda" class="form-control" id="exampleInputdireccion" aria-describedby="direccionHelp" placeholder="Ingresa por favor la direccion de la vivienda">
+              <small id="viviendaHelp" class="form-text text-muted">Recuerda escribir la direccion de la vivienda.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputCapacidad1" class="form-label mt-4">Escribe por favor en números la capacidad (en cuanto a personas)</label>
+              <input type="capacidad" class="form-control" id="exampleInputPassword1" placeholder="Ingresa por favor el numero de la capacidad" autocomplete="off">
+              <small id="capacidadHelp" class="form-text text-muted">Escribe por favor la capacidad de la vivienda (en cuanto a personas).</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPisos1" class="form-label mt-4">Escribe por favor en números cuantos pisos tiene la casa</label>
+              <input type="pisos" class="form-control" id="exampleInputpisos" placeholder="Ingresa por favor el numero de pisos o niveles de la casa" autocomplete="off">
+              <small id="pisosHelp" class="form-text text-muted">Recuerda que si tienes un piso destinado unicamente a terraza cuenta como nivel</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputMunicipio" class="form-label mt-4">Escribe por favor en números el código del municipio</label>
+              <input type="municipio" class="form-control" id="exampleInputPassword1" placeholder="Ingresa por favor el numero de identificacion del municipio" autocomplete="off">
+              <small id="municipioHelp" class="form-text text-muted">Escribe por favor el numero del id del municipio</small>
+            </div>
+            <h1>          </h1>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+</body>
+</html>

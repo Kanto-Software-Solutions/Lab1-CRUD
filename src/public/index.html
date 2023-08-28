@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <style>
+      /* Estilo personalizado para alinear los elementos desde la derecha */
+      .navbar-nav {
+          margin-left: auto;
+          flex-direction: row-reverse;
+      }
+      .nav-item {
+          margin-right: .5rem;
+      }
+  </style>
+</head>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Taller CRUD iTalento</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="/departamento">Departamentos
+              <span class="visually-hidden">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/persona">Personas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/municipio">Municipios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/vivienda">Vivienda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/propietario">Propietarios</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="card mb-3 m-4 mx-auto" style="max-width: 700px;">
+    <h3 class="card-header" style="text-align: center;">¡Bienvenido!</h3>
+    <div class="card-body">
+      <h5 class="card-title"  style="text-align: center;" >Este es el laboratorio número 1 de iTalento</h5>
+      <h6 class="card-subtitle text-muted">Esta app es un CRUD donde encontraras las tablas: Departamento, Personas, Municipios, Vivienda y Propietarios, en las cuales podras hacer: Creación de registros, Leer registros, Actualizar registros y Borrar registros.</h6>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+      <img src="./Modelo E-R.png" alt="Descripción de la imagen" style="object-fit: contain; width: auto; height: auto; max-width: 100%; max-height: 100vh;">
+    </div>
+
+    <div class="card-body">
+      <p class="card-text">Este es el modelo entidad relación del laboratorio. Por favor elige una de las opciones:</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><a href="/departamento" class="card-link">Departamentos</a></li>
+      <li class="list-group-item"><a href="/persona" class="card-link">Personas</a></li>
+      <li class="list-group-item"><a href="/municipio" class="card-link">Municipios</a></li>
+      <li class="list-group-item"><a href="/vivienda" class="card-link">Viviendas</a></li>
+      <li class="list-group-item"><a href="/propietario" class="card-link">Propietarios</a></li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personas</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <style>
+        /* Estilo personalizado para alinear los elementos desde la derecha */
+        .navbar-nav {
+            margin-left: auto;
+            flex-direction: row-reverse;
+        }
+        .nav-item {
+            margin-right: .5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Taller CRUD iTalento</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/departamento">Departamento</a>
+                  </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/persona">Personas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/municipio">Municipios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/vivienda">Vivienda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/propietario">Propietarios</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="card m-4 mx-auto" style="max-width: 500px;">
+      <div class="card-body">
+        <form class="m-4" action="/add" method="post">
+          <fieldset>
+            <legend style="text-align: center;">Personas</legend>
+            <div class="form-group row">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputnombres1" class="form-label mt-4">Escribe tus nombres</label>
+              <input type="nombres" class="form-control" id="exampleInputnombres1" aria-describedby="apellidosHelp" placeholder="Ingresa por favor tus dos nombres si no exceden 45 caracteres">
+              <small id="nombresHelp" class="form-text text-muted">Recuerda que si excedes los 45 caracteres en los dos nombres, solo debes poner uno.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputApellidos" class="form-label mt-4">Escribe tus apellidos</label>
+              <input type="apellidos" class="form-control" id="exampleInputApellidos1" placeholder="Ingresa por favor tus dos apellidos si no excedes los 45 caracteres" autocomplete="off">
+              <small id="apellidosHelp" class="form-text text-muted">Recuerda que si excedes los 45 caracteres en los dos apellidos, solo debes poner uno.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputedad" class="form-label mt-4">Escribe tu edad</label>
+              <input type="edad" class="form-control" id="exampleInputEdad1" placeholder="Ingresa por favor tu edad en numeros" autocomplete="off">
+              <small id="edadHelp" class="form-text text-muted">Ingresa por favor la edad</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputNumero" class="form-label mt-4">Escribe tu numero de telefono</label>
+              <input type="numero" class="form-control" id="exampleInputNumero1" placeholder="Ingresa por favor tu numero de telefono" autocomplete="off">
+              <small id="numeroHelp" class="form-text text-muted">Escribe en numeros tu numero</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputIdDepto" class="form-label mt-4">Escribe la identificacion del departamento donde naciste</label>
+              <input type="iddep" class="form-control" id="exampleInputiddep" placeholder="Ingresa por favor el numero del del departamento donde naciste" autocomplete="off">
+              <small id="iddepHelp" class="form-text text-muted">Recuerda que solo hay 32 departamentos</small>
+            </div>
+            <h1></h1>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+</body>
+</html>
