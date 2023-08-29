@@ -3,8 +3,29 @@ const conexion = require('../database/db');
 const { query } = require('express');
 
 //TODO: Actualizar sentencias, cambiar nombres de funciones por más representativos. Reorganizar funciones
+/*CHANGELOG: 
+*       - Creé La Primera Query de Ejemplo que es un Create Persona
+*		- Reorganizé el Código para que siga el orden de CRUD
+*		- Siguiendo lo anterior, comenté una parte del código para modificarlo despues
+*/
 
 //CREATE 
+// Query de Ejemplo
+exports.createPerson = (req,res) =>{
+	const nombre = req.params.nombre;
+	const apellido = req.params.apellido;
+	const edad = req.params.edad;
+	const telefono = req.params.telefono;
+	const departamento = req.params.departamento;
+	conexion.query("INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ( '" + nombre + "' , '" + apellido + "' , '" + edad + "' , '" + telefono + "' , '" + departamento + "')", (error, results) => {
+		if(error){
+			console.log(error);
+		}else{
+			return // Do Something (Se retorna el Render o un Objeto o JSON???)
+		}
+	});
+}
+/*
 exports.createp  = (req,res) =>{
 	var queries = [
 		'select p.id as p_id, p.nombre, p.apellido from persona p',
@@ -58,8 +79,9 @@ exports.createpo = (req,res) =>{
 		}
 	});
 }
+*/
 
-//SELECT-Update
+//READ-Update (?)
 exports.select_up = (req,res)=>{
 	const id = req.params.id;
 	var queries = [
@@ -124,6 +146,44 @@ exports.select_upo = (req,res) => {
 	})
 }
 
+//READ
+exports.verp = (req,res) => {
+	conexion.query('select p.id, p.nombre , p.apellido, p.edad, p.telefono, s.sexo, v.direccion, h.nombre as responsable_n from persona p, sexo s, vivienda v, persona h where p.sexo = s.id and p.vivienda = v.id and p.cabeza_hogar = h.id order by p.id asc',(error,results) => {
+		if(error){
+			throw error;
+		}else{
+			res.render('ver_personas', {results:results});
+		}
+	})
+}
+exports.verv = (req,res) => {
+	var query = "select * from viviendas_con_dueno union table viviendas_sin_dueno order by id"
+	conexion.query(query,(error,results) => {
+		if(error){
+			throw error;
+		}else{
+			res.render('ver_viviendas', {results:results});
+		}
+	})
+}
+exports.verm = (req,res) => {
+	conexion.query('select m.*, p.nombre as gobernador_n, p.apellido as gobernador_a from municipio m left join	persona p on m.gobernador = p.id;',(error,results) => {
+		if(error){
+			throw error;
+		}else{
+			res.render('ver_municipios', {results:results});
+		}
+	})
+}
+exports.verpo = (req,res) => {
+	conexion.query('select po.*, p.nombre, p.apellido, v.direccion from propietarios po, persona p, vivienda v where po.persona_id = p.id and po.vivienda_id = v.id order by po.id',(error,results) => {
+		if(error){
+			throw error;
+		}else{
+			res.render('ver_propietarios', {results:results});
+		}
+	})
+}
 
 //UPDATE
 exports.editp = (req,res)=> {
@@ -256,6 +316,8 @@ exports.savem = (req,res) => {
 		}
 	});
 }
+
+/* YA INCORPORADO ARRIBA
 exports.savep = (req,res) => {
 	const nombre		= req.body.nombre;
 	const apellido		= req.body.apellido;
@@ -276,45 +338,8 @@ exports.savep = (req,res) => {
 	});
 	
 }
+*/
 
-//SELECT
-exports.verp = (req,res) => {
-	conexion.query('select p.id, p.nombre , p.apellido, p.edad, p.telefono, s.sexo, v.direccion, h.nombre as responsable_n from persona p, sexo s, vivienda v, persona h where p.sexo = s.id and p.vivienda = v.id and p.cabeza_hogar = h.id order by p.id asc',(error,results) => {
-		if(error){
-			throw error;
-		}else{
-			res.render('ver_personas', {results:results});
-		}
-	})
-}
-exports.verv = (req,res) => {
-	var query = "select * from viviendas_con_dueno union table viviendas_sin_dueno order by id"
-	conexion.query(query,(error,results) => {
-		if(error){
-			throw error;
-		}else{
-			res.render('ver_viviendas', {results:results});
-		}
-	})
-}
-exports.verm = (req,res) => {
-	conexion.query('select m.*, p.nombre as gobernador_n, p.apellido as gobernador_a from municipio m left join	persona p on m.gobernador = p.id;',(error,results) => {
-		if(error){
-			throw error;
-		}else{
-			res.render('ver_municipios', {results:results});
-		}
-	})
-}
-exports.verpo = (req,res) => {
-	conexion.query('select po.*, p.nombre, p.apellido, v.direccion from propietarios po, persona p, vivienda v where po.persona_id = p.id and po.vivienda_id = v.id order by po.id',(error,results) => {
-		if(error){
-			throw error;
-		}else{
-			res.render('ver_propietarios', {results:results});
-		}
-	})
-}
 
 //DELETE
 exports.deletep = (req,res) => {
