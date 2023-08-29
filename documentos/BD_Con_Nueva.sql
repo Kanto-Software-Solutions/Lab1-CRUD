@@ -2,7 +2,7 @@
 -- Table `lab1`.`Departamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lab1`.`Departamento` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL, 
   `nombreDepartamento` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

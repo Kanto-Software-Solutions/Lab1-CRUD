@@ -8,6 +8,7 @@ const { query } = require('express');
 *       - Creé La Primera Query de Ejemplo que es un Create Persona
 *		- Reorganizé el Código para que siga el orden de CRUD
 *		- Siguiendo lo anterior, comenté una parte del código para modificarlo despues
+*		- Actualicé la constante de conexión
 */
 
 //CREATE 
@@ -22,10 +23,27 @@ exports.createPerson = (req,res) =>{
 		if(error){
 			console.log(error);
 		}else{
+			console.log("Se creó la persona: " + nombre + " " + apellido);
 			return // Do Something (Se retorna el Render o un Objeto o JSON???)
 		}
 	});
 }
+
+exports.createDepartamento = (req,res) => {
+	const id_departamento = req.body.id //body o params?
+	const nombreDepartamento = req.body.nombreDepartamento;
+
+	let query = ('INSERT INTO departamento (id, nombreDepartamento) VALUES ( "' + id_departamento +  '", "' + nombreDepartamento + '")');
+	conexion.query(query, (error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se creo el departamento ' + nombreDepartamento);
+			return  // Do Something (Se retorna el Render o un Objeto o JSON???)
+		}
+	});
+}
+
 /*
 exports.createp  = (req,res) =>{
 	var queries = [
