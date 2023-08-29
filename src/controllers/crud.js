@@ -9,6 +9,7 @@ const { query } = require('express');
 *		- Reorganizé el Código para que siga el orden de CRUD
 *		- Siguiendo lo anterior, comenté una parte del código para modificarlo despues
 *		- Actualicé la constante de conexión
+*		- Creados Scripts de Create (Persona, Departamento)
 */
 
 //CREATE 
