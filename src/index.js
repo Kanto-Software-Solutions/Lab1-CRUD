@@ -32,6 +32,9 @@ conexion.connect((error) =>{
 	}
 	console.log('Conectado a la DB');
 });
+
+module.exports = conexion; //Exportar para CRUD
+
 app.use(express.urlencoded({extended:false}));
 //Rutas
 

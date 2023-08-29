@@ -1,5 +1,6 @@
 const { error } = require('jquery');
-const conexion = require('../database/db');
+// const conexion = require('../database/db'); Ya no existe el archivo
+const conexion = require('../index');
 const { query } = require('express');
 
 //TODO: Actualizar sentencias, cambiar nombres de funciones por más representativos. Reorganizar funciones
