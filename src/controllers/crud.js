@@ -3,13 +3,13 @@ const { error } = require('jquery');
 const conexion = require('../index');
 const { query } = require('express');
 
-//TODO: Actualizar sentencias, cambiar nombres de funciones por más representativos. Reorganizar funciones. Retornos de las funciones hacia front
-/*CHANGELOG: 
+//TODO: Actualizar sentencias, cambiar nombres de funciones por más representativos. Retornos de las funciones hacia front
+/* CHANGELOG: 
 *       - Creé La Primera Query de Ejemplo que es un Create Persona
 *		- Reorganizé el Código para que siga el orden de CRUD
 *		- Siguiendo lo anterior, comenté una parte del código para modificarlo despues
 *		- Actualicé la constante de conexión
-*		- Creados Scripts de Create (Persona, Departamento, Municipio, Vivienda y Propietario) y Delete (Ya hecho)
+*		- Creados Scripts de Create (Persona, Departamento, Municipio, Vivienda y Propietario), Update y Delete (Ya hecho)
 */
 
 //CREATE 
@@ -79,7 +79,7 @@ exports.createVivienda = (req, res) => {
 			var string=JSON.stringify(results);
 			var json =  JSON.parse(string);
 			console.log('Se creo la vivienda ' + direccion +' ub '+ ubicacion);
-			let query1 = ('INSERT INTO propietarios (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ json[0].insertId + ' , ' + departamento_id + ')')
+			let query1 = ('INSERT INTO propietarios (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ json[0].insertId + ' , ' + departamento_id + ')');
 			conexion.query(query1, (error,results)=>{
 				if(error){
 					console.log(error);
@@ -269,7 +269,89 @@ exports.verpo = (req,res) => {
 }
 
 //UPDATE
-exports.editp = (req,res)=> {
+exports.updatePersona = (req,res)=> {
+	const id 			= req.body.id;
+	const nombre		= req.body.nombre;
+	const apellido		= req.body.apellido;
+	const edad			= req.body.edad;
+	const departamento	= req.body.departamento;
+	const telefono		= req.body.telefono;
+	const vivienda		= req.body.vivienda;
+	const cabeza_hogar	= req.body.cabeza_hogar;
+
+	let query = ('update persona set nombre="'+nombre+'",apellido="'+apellido+'", edad= "'+edad+'", telefono = "'+telefono+'", sexo = "'+departamento+'", vivienda = "'+vivienda+'", cabeza_hogar = "'+cabeza_hogar+'" where id ='+id );
+	conexion.query(query,(error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se edito el usuario con ID: ' + id +' ap '+ nombre);
+			res.redirect('ver_personas'); //Lo voy a dejar aunque no tengo ni idea si funciona xD
+		}
+	});
+}
+
+exports.updateMunicipio = (req,res) => {
+	const id 			= req.body.id;
+	const nombre		= req.body.nombre;
+	const area			= req.body.area;
+	const presupuesto	= req.body.presupuesto;
+	const gobernador	= req.body.gobernador;
+
+	let query = ('update municipio set nombre="'+nombre+'", area ='+area+', presupuesto= '+presupuesto+', gobernador = '+gobernador+' where id = '+id);
+	//Sin comillas para que concuerde con Script de Diana
+
+	conexion.query(query, (error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se Actualizo el municipio ' + nombre +' ar '+ area+' pre ' + presupuesto +' gob ' + gobernador);
+			res.redirect('ver_municipios'); //Lo voy a dejar aunque no tengo ni idea si funciona xD
+		}
+	});
+}
+
+exports.updateVivienda = (req,res) => {
+	const id			= req.body.id;
+	const direccion		= req.body.direccion;
+	const capacidad		= req.body.capacidad;
+	const niveles		= req.body.niveles;
+	const ubicacion		= req.body.ubicacion;
+
+	let query0 = ('update vivienda set direccion ="'+direccion+'", capacidad ='+capacidad+', niveles= '+niveles+', ubicacion = '+ubicacion+' where id = '+id);
+	//Sin comillas para que concuerde con Script de Diana
+
+	conexion.query(query0, (error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se edito la vivienda id: '+id+' dir ' + direccion +' ub '+ ubicacion);
+			res.redirect('ver_viviendas'); //Lo voy a dejar aunque no tengo ni idea si funciona xD
+		}
+	});
+}
+
+exports.updatePropietario = (req,res) => {
+	const id			= req.body.id;
+	const persona_id	= req.body.persona_id;
+	const vivienda_id	= req.body.vivienda_id;
+	const departamento_id = req.body.departamento_id;
+	
+	let query0 = ('update propietarios set  persona_id =' + persona_id + ', vivienda_id =' + vivienda_id + ', departamento_id =' + departamento_id + ' where id = ' + id);
+	
+	conexion.query(query0, (error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se edito el propietario ' + persona_id +' ar '+ vivienda_id);
+			res.redirect('ver_propietarios'); //Lo voy a dejar aunque no tengo ni idea si funciona xD
+		}
+	});
+}
+
+/* YA INCORPORADO ARRIBA
+
+  UPDATE
+exports.editPersona = (req,res)=> {
 	const id 			= req.body.id;
 	const nombre		= req.body.nombre;
 	const apellido		= req.body.apellido;
@@ -278,6 +360,7 @@ exports.editp = (req,res)=> {
 	const telefono		= req.body.telefono;
 	const vivienda		= req.body.vivienda;
 	const cabeza_hogar	= req.body.cabeza_hogar;
+	
 	let query = ('update persona set nombre="'+nombre+'",apellido="'+apellido+'", edad= "'+edad+'", telefono = "'+telefono+'", sexo = "'+sexo+'", vivienda = "'+vivienda+'", cabeza_hogar = "'+cabeza_hogar+'" where id ='+id )
 	conexion.query(query,(error,results)=>{
 		if(error){
@@ -340,7 +423,7 @@ exports.editpo = (req,res) => {
 	});
 }
 
-/* YA INCORPORADO ARRIBA
+
    INSERT
 exports.savev = (req,res) => {
 	const direccion		= req.body.direccion;
