@@ -290,6 +290,22 @@ exports.updatePersona = (req,res)=> {
 	});
 }
 
+exports.updateDepartamento = (req,res) => {
+	const id					= req.body.id;
+	const nombreDepartamento	= req.body.nombreDepartamento;
+
+	let query0 = ('update departamento set nombreDepartamento = "' + nombreDepartamento + '" where id = ' + id);
+	
+	conexion.query(query0, (error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se edito el departamento: ' + nombreDepartamento);
+			res.redirect('ver_propietarios'); //Lo voy a dejar aunque no tengo ni idea si funciona xD
+		}
+	});
+}
+
 exports.updateMunicipio = (req,res) => {
 	const id 			= req.body.id;
 	const nombre		= req.body.nombre;
@@ -336,7 +352,7 @@ exports.updatePropietario = (req,res) => {
 	const vivienda_id	= req.body.vivienda_id;
 	const departamento_id = req.body.departamento_id;
 	
-	let query0 = ('update propietarios set  persona_id =' + persona_id + ', vivienda_id =' + vivienda_id + ', departamento_id =' + departamento_id + ' where id = ' + id);
+	let query0 = ('update propietario set  persona_id =' + persona_id + ', vivienda_id =' + vivienda_id + ', departamento_id =' + departamento_id + ' where id = ' + id);
 	
 	conexion.query(query0, (error,results)=>{
 		if(error){
