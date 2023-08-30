@@ -476,3 +476,16 @@ exports.deletev = (req,res) => {
 	}
 	)
 }
+
+exports.deleteDepartamento = (req,res) => {
+	const id =  req.params.id;
+	conexion.query('DELETE FROM departamento WHERE id = '+ id , (error,results) =>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se elimino el departamento con ID' + id);
+			res.redirect('/ver_departamentos') // (?)
+		}
+	}
+	)
+}
