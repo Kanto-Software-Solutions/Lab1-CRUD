@@ -3,17 +3,17 @@ const { error } = require('jquery');
 const conexion = require('../index');
 const { query } = require('express');
 
-//TODO: Actualizar sentencias, cambiar nombres de funciones por más representativos. Reorganizar funciones
+//TODO: Actualizar sentencias, cambiar nombres de funciones por más representativos. Reorganizar funciones. Retornos de las funciones hacia front
 /*CHANGELOG: 
 *       - Creé La Primera Query de Ejemplo que es un Create Persona
 *		- Reorganizé el Código para que siga el orden de CRUD
 *		- Siguiendo lo anterior, comenté una parte del código para modificarlo despues
 *		- Actualicé la constante de conexión
-*		- Creados Scripts de Create (Persona, Departamento)
+*		- Creados Scripts de Create (Persona, Departamento, Municipio, Vivienda y Propietario)
 */
 
 //CREATE 
-// Query de Ejemplo
+
 exports.createPerson = (req,res) =>{
 	const nombre = req.params.nombre;
 	const apellido = req.params.apellido;
@@ -41,6 +41,69 @@ exports.createDepartamento = (req,res) => {
 		}else{
 			console.log('Se creo el departamento ' + nombreDepartamento);
 			return  // Do Something (Se retorna el Render o un Objeto o JSON???)
+		}
+	});
+}
+
+exports.createMunicipio = (req,res) => {
+	const nombre		= req.body.nombre;
+	const area			= req.body.area;
+	const presupuesto	= req.body.presupuesto;
+	const gobernador	= req.body.gobernador;
+
+	let query = ('INSERT INTO municipio (nombre,area,presupuesto,gobernador) VALUES ("'+ nombre +'", '+ area +' , '+ presupuesto +' , '+ gobernador + ')') //Sin comillas para que concuerde con Script de Diana
+
+	conexion.query(query, (error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se creo el municipio ' + nombre +' ar '+ area+' pre ' + presupuesto +' gob ' + gobernador);
+			return   // Do Something (Se retorna el Render o un Objeto o JSON???)
+		}
+	});
+}
+
+exports.createVivienda = (req, res) => {
+	const direccion		= req.body.direccion;
+	const capacidad		= req.body.capacidad;
+	const niveles		= req.body.niveles;
+	const ubicacion		= req.body.ubicacion;
+	const persona_id 	= req.body.persona_id;
+	const departamento_id = req.body.departamento_id;
+
+	let query0 = ('INSERT INTO vivienda (direccion,capacidad,niveles,ubicacion) VALUES ("'+ direccion + ' , ' + capacidad + ' , ' + niveles + ' , ' + ubicacion+');SELECT LAST_INSERT_ID() as id') //Sin comillas para que concuerde con Script de Diana
+	conexion.query(query0, (error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			var string=JSON.stringify(results);
+			var json =  JSON.parse(string);
+			console.log('Se creo la vivienda ' + direccion +' ub '+ ubicacion);
+			let query1 = ('INSERT INTO propietarios (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ json[0].insertId + ' , ' + departamento_id + ')')
+			conexion.query(query1, (error,results)=>{
+				if(error){
+					console.log(error);
+				}else{
+					console.log('Se creó el propietario ' + persona_id +' ar '+ json[0].insertId);
+				}
+			});
+			return // Do Something (Se retorna el Render o un Objeto o JSON???)
+		}
+	});
+}
+
+exports.createPropietario = (req,res) => {
+	const persona_id		= req.body.persona_id;
+	const vivienda_id		= req.body.vivienda_id;
+	const departamento_id = req.body.departamento_id;
+
+	let query = ('INSERT INTO propietarios (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ vivienda_id + ' , ' + departamento_id + ')')
+	conexion.query(query, (error,results)=>{
+		if(error){
+			console.log(error);
+		}else{
+			console.log('Se creo el propietario ' + persona_id +' ar '+ vivienda_id);
+			return // Do Something (Se retorna el Render o un Objeto o JSON???)
 		}
 	});
 }
@@ -277,7 +340,8 @@ exports.editpo = (req,res) => {
 	});
 }
 
-//INSERT
+/* YA INCORPORADO ARRIBA
+   INSERT
 exports.savev = (req,res) => {
 	const direccion		= req.body.direccion;
 	const capacidad		= req.body.capacidad;
@@ -319,6 +383,8 @@ exports.savepo = (req,res) => {
 		}
 	});
 }
+
+
 exports.savem = (req,res) => {
 	const nombre		= req.body.nombre;
 	const area			= req.body.area;
@@ -337,7 +403,7 @@ exports.savem = (req,res) => {
 	});
 }
 
-/* YA INCORPORADO ARRIBA
+
 exports.savep = (req,res) => {
 	const nombre		= req.body.nombre;
 	const apellido		= req.body.apellido;
