@@ -77,13 +77,17 @@ router.get('/update-departamento/:id', (req, res) => {
 
 router.post('/updateDepartamento', crud.updateDepartamento);
 
-router.get('/update-municipio', (req, res) => {
-	res.render('update-municipio');
+router.get('/update-municipio/:id', (req, res) => {
+	crud.listMunicipio(req,res);
 });
 
-router.get('/update-vivienda', (req, res) => {
-	res.render('update-vivienda');
+router.post('/updateMunicipio', crud.updateMunicipio);
+
+router.get('/update-vivienda/:id', (req, res) => {
+	crud.listVivienda(req,res);
 });
+
+router.post('/updateVivienda', crud.updateVivienda);
 
 router.get('/update-persona/:id', (req, res) => {
 	crud.listPersona(req,res);
@@ -91,9 +95,11 @@ router.get('/update-persona/:id', (req, res) => {
 
 router.post('/updatePersona', crud.updatePersona);
 
-router.get('/update-propietario', (req, res) => {
-	res.render('update-propietario');
+router.get('/update-propietario/:id', (req, res) => {
+	crud.listPropietario(req,res);
 });
+
+router.post('/updatePropietario', crud.updatePropietario);
 
 //------------------------------------- DELETE ------------------------------------
 
