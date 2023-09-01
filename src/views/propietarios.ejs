@@ -50,7 +50,6 @@
               <li class="nav-item dropdown">
                 <a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Propietarios</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/crear-propietario">Insertar</a>
                   <a class="dropdown-item" href="/propietarios">Ver</a>
                 </div>
               </li>
@@ -59,14 +58,12 @@
         </div>
     </nav>
     <div class="container">
-      <a href="/crear-propietario" class="btn btn-primary mt-4">Nuevo</a>
       <table class="table">
         <thead>
           <tr>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Vivienda</th>
-            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -74,10 +71,7 @@
             <tr>
               <th scope="row"><%= propietario.nombre %></th>
               <th scope="row"><%= propietario.apellido %></th>
-              <th scope="row"><%= propietario.direccion %></th>
-              <th scope="row">
-                <a href="/update-propietario/<%= propietario.vivienda_id %>" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-propietario/<%= propietario.vivienda_id %>" class="btn btn-danger mt-auto">Borrar</a>
-              </th>
+              <th scope="row"><%= propietario.direccion %></th> 
             </tr>
           <% }) %>
         </tbody>
