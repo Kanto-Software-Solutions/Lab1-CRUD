@@ -87,6 +87,7 @@
               <th scope="col">Area</th>
               <th scope="col">Presupuesto</th>
               <th scope="col">Gobernador</th>
+              <th scope="col">Departamento</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
@@ -97,9 +98,10 @@
                 <th scope="row"><%= municipio.nombre %></th>
                 <th scope="row"><%= municipio.area %></th>
                 <th scope="row"><%= municipio.presupuesto %></th>
-                <th scope="row"><%= municipio.gobernador %></th>
+                <th scope="row"><%= municipio.gobernador_n + ' ' +municipio.gobernador_a %></th>
+                <th scope="row"><%= municipio.departamento %></th>
                 <th scope="row">
-                  <a href="/update-municipio" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-municipio" class="btn btn-danger mt-auto">Borrar</a>
+                  <a href="/update-municipio/<%= municipio.id %>" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-municipio/<%= municipio.id %>" class="btn btn-danger mt-auto">Borrar</a>
                 </th>
               </tr>
             <% }) %>

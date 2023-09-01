@@ -77,21 +77,29 @@ router.get('/update-departamento/:id', (req, res) => {
 
 router.post('/updateDepartamento', crud.updateDepartamento);
 
-router.get('/update-municipio', (req, res) => {
-	res.render('update-municipio');
+router.get('/update-municipio/:id', (req, res) => {
+	crud.listMunicipio(req,res);
 });
 
-router.get('/update-vivienda', (req, res) => {
-	res.render('update-vivienda');
+router.post('/updateMunicipio', crud.updateMunicipio);
+
+router.get('/update-vivienda/:id', (req, res) => {
+	crud.listVivienda(req,res);
 });
 
-router.get('/update-persona', (req, res) => {
-	res.render('update-persona');
+router.post('/updateVivienda', crud.updateVivienda);
+
+router.get('/update-persona/:id', (req, res) => {
+	crud.listPersona(req,res);
 });
 
-router.get('/update-propietario', (req, res) => {
-	res.render('update-propietario');
+router.post('/updatePersona', crud.updatePersona);
+
+router.get('/update-propietario/:id', (req, res) => {
+	crud.listPropietario(req,res);
 });
+
+router.post('/updatePropietario', crud.updatePropietario);
 
 //------------------------------------- DELETE ------------------------------------
 
@@ -102,25 +110,25 @@ router.get('/borrar-departamento/:id', (req, res) => {
 router.post('/deleteDepartamento', crud.deleteDepartamento);
 
 router.get('/borrar-municipio/:id', (req, res) => {
-	res.render('borrar-municipio');
+	crud.deleteMunicipioRender(req, res);
 });
 
-router.post('/borrar-municipio', crud.deleteMunicipio)
+router.post('/deleteMunicipio', crud.deleteMunicipio)
 
 router.get('/borrar-vivienda/:id', (req, res) => {
-	res.render('borrar-vivienda');
+	crud.deleteViviendaRender(req, res);
 });
 
-router.post('/borrar-vivienda', crud.deleteVivienda)
+router.post('/deleteVivienda', crud.deleteVivienda)
 
 router.get('/borrar-persona/:id', (req, res) => {
-	res.render('borrar-persona');
+	crud.deletePersonaRender(req,res);
 });
 
-router.post('/borrar-persona', crud.deletePersona)
+router.post('/deletePersona', crud.deletePersona)
 
 router.get('/borrar-propietario/:id', (req, res) => {
-	res.render('borrar-propietario');
+	crud.deletePropietarioRender(req, res);
 });
 
-router.post('/borrar-propietario', crud.deletePropietario)
+router.post('/deletePropietario', crud.deletePropietario)

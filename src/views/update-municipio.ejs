@@ -77,5 +77,46 @@
           </div>
         </div>
       </nav>
+
+      <div class="card m-4 mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+          <form class="m-4" action="/updateMunicipio" method="POST">
+            <fieldset>
+              <legend style="text-align: center;">Municipios</legend>
+              <div class="form-group row">
+              </div>
+              <input id="id" name="id" value="<%= municipio.id %>" hidden>
+              <div class="form-group">
+                <label for="nombre" class="form-label mt-4">Nombre del municipio</label>
+                <input type="text" name="nombre" class="form-control" id="nombre" aria-describedby="municipioHelp" value="<%= municipio.nombre %>">
+                <small id="municipioHelp" class="form-text text-muted">Inserta por favor el nombre del municipio.</small>
+              </div>
+              <div class="form-group">
+                <label for="area" class="form-label mt-4">Escriba el area en numeros</label>
+                <input type="text" name="area"  class="form-control" id="area" value="<%= municipio.area %>" autocomplete="off">
+                <small id="areaHelp" class="form-text text-muted">Por favor ingresa la cantidad numerica del area.</small>
+              </div>
+              <div class="form-group">
+                <label for="presupuesto" class="form-label mt-4">Escriba el presupuesto en numeros</label>
+                <input type="text" name="presupuesto" class="form-control" id="presupuesto" value="<%= municipio.presupuesto %>" autocomplete="off">
+                <small id="presupuestoHelp" class="form-text text-muted">Por favor ingresa la cantidad numerica del presupuesto.</small>
+              </div>
+              <div class="form-group">
+                <label for="gobernador" class="form-label mt-4">Escriba la identificacion del gobernador</label>
+                <input type="text" name="gobernador" class="form-control" id="gobernador" value="<%= municipio.gobernador %>" autocomplete="off">
+                <small id="identificacionHelp" class="form-text text-muted">Por favor ingresa la identificacion del gobernador.</small>
+              </div>
+              <div class="form-group">
+                <label for="departamento" class="form-label mt-4">Escriba el id del departamento</label>
+                <input type="text" name="departamento" class="form-control" id="departamento" value="<%= municipio.departamento %>" autocomplete="off">
+                <small id="identificacionHelp" class="form-text text-muted">Por favor ingresa la identificacion del departamento.</small>
+              </div>
+              <h1> </h1>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      
     </body>
 </html>

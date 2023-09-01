@@ -85,6 +85,11 @@
             <div class="form-group row">
             </div>
             <div class="form-group">
+              <label for="id" class="form-label mt-4">Escribe tu identificacion</label>
+              <input type="number" name="id" class="form-control" id="id" aria-describedby="id" placeholder="ingresa tu identificacion">
+              <small id="nombresHelp" class="form-text text-muted">Recuerda que una identificacion tiene 10 numeros</small>
+            </div>
+            <div class="form-group">
               <label for="nombre" class="form-label mt-4">Escribe tus nombres</label>
               <input type="text" name="nombre" class="form-control" id="nombre" aria-describedby="apellidosHelp" placeholder="Ingresa por favor tus dos nombres si no exceden 45 caracteres">
               <small id="nombresHelp" class="form-text text-muted">Recuerda que si excedes los 45 caracteres en los dos nombres, solo debes poner uno.</small>
@@ -93,6 +98,12 @@
               <label for="apellido" class="form-label mt-4">Escribe tus apellidos</label>
               <input type="text" name="apellido" class="form-control" id="apellido" placeholder="Ingresa por favor tus dos apellidos si no excedes los 45 caracteres" autocomplete="off">
               <small id="apellidosHelp" class="form-text text-muted">Recuerda que si excedes los 45 caracteres en los dos apellidos, solo debes poner uno.</small>
+            </div>
+            <div class="form-group">
+
+              <label for="sexo" class="form-label mt-4">Escribe tu genero</label>
+              <input type="number" name="sexo" class="form-control" id="sexo" placeholder="Ingresa tu sexo" autocomplete="off">
+              <small id="generoHelp" class="form-text text-muted">ingresa 0 no binario, 1 mujer y 2 hombre.</small>
             </div>
             <div class="form-group">
               <label for="edad" class="form-label mt-4">Escribe tu edad</label>
@@ -105,9 +116,13 @@
               <small id="numeroHelp" class="form-text text-muted">Escribe en numeros tu numero</small>
             </div>
             <div class="form-group">
-              <label for="departamento" class="form-label mt-4">Escribe la identificacion del departamento donde naciste</label>
-              <input type="text" name="departamento" class="form-control" id="departamento" placeholder="Ingresa por favor el numero del del departamento donde naciste" autocomplete="off">
-              <small id="iddepHelp" class="form-text text-muted">Recuerda que solo hay 32 departamentos</small>
+              <label for="vivienda_id" class="form-label mt-4">Escribe la identificacion del tu vivienda</label>
+              <input type="text" name="vivienda_id" class="form-control" id="vivienda_id" placeholder="Ingresa el id de tu vivienda" autocomplete="off">
+
+            </div>
+            <div class="form-group">
+              <label for="responsable" class="form-label mt-4">Escribe la identificacion del responsable, escribe tu identificacion si tu eres el responsable</label>
+              <input type="number" name="responsable" class="form-control" id="responsable" placeholder="Ingresa el id del responsable" autocomplete="off">
             </div>
             <h1></h1>
             <button type="submit" class="btn btn-primary">Enviar</button>
