@@ -268,8 +268,9 @@ exports.updateMunicipio = (req,res) => {
 	const area			= req.body.area;
 	const presupuesto	= req.body.presupuesto;
 	const gobernador	= req.body.gobernador;
+	const departamento  = req.body.departamento;
 
-	let query = ('update municipio set nombre="'+nombre+'", area ='+area+', presupuesto= '+presupuesto+', gobernador = '+gobernador+' where id = '+id);
+	let query = ('update municipio set nombre="'+nombre+'", area ='+area+', presupuesto= '+presupuesto+', gobernador = '+gobernador+', departamento = ' + departamento + ' where id = '+id);
 
 	conexion.query(query, (error,results)=>{
 		if(error){
