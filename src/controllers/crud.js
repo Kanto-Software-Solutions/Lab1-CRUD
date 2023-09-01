@@ -34,10 +34,10 @@ exports.createPersona = (req,res) =>{
 }
 
 exports.createDepartamento = (req,res) => {
-	const id_departamento = req.body.id //body o params?
+	//const id_departamento = req.body.id //body o params?
 	const nombreDepartamento = req.body.nombreDepartamento;
 
-	let query = ('INSERT INTO departamento (id, nombreDepartamento) VALUES ( "' + id_departamento +  '", "' + nombreDepartamento + '")');
+	let query = ('INSERT INTO departamento ( nombreDepartamento) VALUES ( "' + nombreDepartamento + '")');
 	conexion.query(query, (error,results)=>{
 		if(error){
 			console.log(error);
@@ -53,8 +53,9 @@ exports.createMunicipio = (req,res) => {
 	const area			= req.body.area;
 	const presupuesto	= req.body.presupuesto;
 	const gobernador	= req.body.gobernador;
+	const departamento = req.body.departamento_id;
 
-	let query = ('INSERT INTO municipio (nombre,area,presupuesto,gobernador) VALUES ("'+ nombre +'", '+ area +' , '+ presupuesto +' , '+ gobernador + ')') //Sin comillas para que concuerde con Script de Diana
+	let query = ('INSERT INTO municipio (nombre,area,presupuesto,gobernador,departamento) VALUES ("'+ nombre +'", '+ area +' , '+ presupuesto +' , '+ gobernador + ', '+ departamento + ')') //Sin comillas para que concuerde con Script de Diana
 
 	conexion.query(query, (error,results)=>{
 		if(error){
@@ -70,16 +71,17 @@ exports.createVivienda = (req, res) => {
 	const direccion		= req.body.direccion;
 	const capacidad		= req.body.capacidad;
 	const niveles		= req.body.niveles;
-	const ubicacion		= req.body.ubicacion;
+	const municipio		= req.body.municipio;
+	const dueño 		= req.body.persona_id;
 
-	let query0 = ('INSERT INTO vivienda (direccion,capacidad,niveles,ubicacion) VALUES ("'+ direccion + '" , ' + capacidad + ' , ' + niveles + ' , ' + ubicacion+')') //Sin comillas para que concuerde con Script de Diana
+	let query0 = ('INSERT INTO vivienda (direccion,capacidad,niveles,municipio) VALUES ("'+ direccion + '" , ' + capacidad + ' , ' + niveles + ' , ' + municipio+', ' + dueño+')') //Sin comillas para que concuerde con Script de Diana
 	conexion.query(query0, (error,results)=>{
 		if(error){
 			console.log(error);
 		}else{
 			var string=JSON.stringify(results);
 			var json =  JSON.parse(string);
-			console.log('Se creo la vivienda ' + direccion +' ub '+ ubicacion);
+			console.log('Se creo la vivienda ' + direccion +' municipio '+ municipio);
 			/*let query1 = ('INSERT INTO propietarios (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ json[0].insertId + ' , ' + departamento_id + ')');
 			conexion.query(query1, (error,results)=>{
 				if(error){
@@ -96,9 +98,8 @@ exports.createVivienda = (req, res) => {
 exports.createPropietario = (req,res) => {
 	const persona_id		= req.body.persona_id;
 	const vivienda_id		= req.body.vivienda_id;
-	const departamento_id = req.body.departamento_id;
 
-	let query = ('INSERT INTO propietario (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ vivienda_id + ' , ' + departamento_id + ')')
+	let query = ('INSERT INTO Persona_has_vivienda (Persona_id , Vivienda_id) VALUES (' + persona_id + ' , '+ vivienda_id + ')')
 	conexion.query(query, (error,results)=>{
 		if(error){
 			console.log(error);
