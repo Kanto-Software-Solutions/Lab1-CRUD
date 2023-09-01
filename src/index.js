@@ -12,27 +12,27 @@ app.set("views", path.join(__dirname, "views"));
 
 //---------------------------------------------------------------------------Puerto
 app.listen(app.get("port"), () => {
-  console.log("Server on port http://localhost:3003", app.get("port"));
+	console.log("Server on port http://localhost:3003", app.get("port"));
 });
 
 //---------------------------------------------------------------------------DB
 const conexion = mysql.createConnection(
-  {
-    host: "localhost",
-    user: "webuser",
-    password: "1234",
-    port: 3306,
-    database: "lab1",
-  },
-  "single"
+	{
+		host: "localhost",
+		user: "webuser",
+		password: "1234",
+		port: 3306,
+		database: "lab1",
+	},
+	"single"
 );
 
 conexion.connect((error) => {
-  if (error) {
-    console.error("No se pudo conectar a la BD: " + error);
-    return;
-  }
-  console.log("Conectado a la DB");
+	if (error) {
+		console.error("No se pudo conectar a la BD: " + error);
+		return;
+	}
+	console.log("Conectado a la DB");
 });
 
 module.exports = conexion;
@@ -41,9 +41,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 //---------------------------------------------------------------------------Router
-app.use('/',require('./router'));
-
-
+app.use("/", require("./router"));
 
 app.use(express.urlencoded({ extended: false }));
 
