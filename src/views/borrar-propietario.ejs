@@ -77,5 +77,24 @@
           </div>
         </div>
       </nav>
+      <div class="card m-4 mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <form class="m-4" action="/deletePropietario" method="POST" >
+                <fieldset>
+                <legend style="text-align: center;">propietarios Editar</legend>
+                <div class="form-group row">
+                </div>
+                <input id="id" name="id" value="<%= propietarios.vivienda_id %>" hidden>
+                <div class="form-group">
+                      <label for="id" class="form-label mt-4">Identificación de la vivienda</label>
+                      <input type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" value="<%= propietario.vivienda_id %>" disabled>
+                      <small id="iddHelp" class="form-text text-muted">ESTAS SEGURO QUE QUIERES BORRAR?</small>
+                  </div>
+                  <h1> </h1>
+                  <button type="submit" class="btn btn-danger"> BORRAR </button>
+                  </fieldset>
+              </form>
+          </div>
+      </div>
     </body>
 </html>
