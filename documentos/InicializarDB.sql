@@ -151,17 +151,17 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Agregar primer registro
 -- -----------------------------------------------------
 INSERT INTO `lab1`.`persona` (id) 
-	VALUES (0);
-INSERT INTO `lab1`.`departamento` (`id`,`nombreDepartamento` ) 
-	VALUES (0,'NN');
-INSERT INTO `lab1`.`municipio` (`id`,`nombre`, `area`, `presupuesto`, `gobernador`, `departamento`) 
-	VALUES (0,"NN", 0, 0, 0, 0);
-INSERT INTO `lab1`.`vivienda` (`id`,`direccion`, `capacidad`, `niveles`, `municipio`, `dueño`) 
-	VALUES (0,"NN",1,1,0,0);
+	VALUES (1);
+INSERT INTO `lab1`.`departamento` (`nombreDepartamento` ) 
+	VALUES ('NN');
+INSERT INTO `lab1`.`municipio` (`nombre`, `area`, `presupuesto`, `gobernador`, `departamento`) 
+	VALUES ("NN", 0, 0, 1, 1);
+INSERT INTO `lab1`.`vivienda` (`direccion`, `capacidad`, `niveles`, `municipio`, `dueño`) 
+	VALUES ("NN",1,1,1,1);
 INSERT INTO `lab1`.`persona_has_vivienda` (`persona_id`,`vivienda_id`) 
-	VALUES (0,0);
+	VALUES (1,1);
 UPDATE `lab1`.`persona`
-SET `vivienda` = 0, `responsable` = 0 WHERE `id` = 0;
+SET `vivienda` = 1, `responsable` = 1 WHERE `id` = 1;
 
 ALTER TABLE `lab1`.`persona` 
 DROP FOREIGN KEY `responsable`,
@@ -176,3 +176,78 @@ ADD CONSTRAINT `responsable`
 ADD CONSTRAINT `viviendaHabitada`
   FOREIGN KEY (`vivienda`)
   REFERENCES `lab1`.`vivienda` (`id`);
+  
+-- -----------------------------------------------------
+-- Ingresar datos
+-- -----------------------------------------------------
+insert into departamento (nombreDepartamento) values ('Amazonas');
+insert into departamento (nombreDepartamento) values ('Antioquia');
+insert into departamento (nombreDepartamento) values ('Arauca');
+insert into departamento (nombreDepartamento) values ('Atlantico');
+insert into departamento (nombreDepartamento) values ('Bolivar');
+insert into departamento (nombreDepartamento) values ('Boyaca');
+insert into departamento (nombreDepartamento) values ('Caldas');
+insert into departamento (nombreDepartamento) values ('Caqueta');
+insert into departamento (nombreDepartamento) values ('Casanare');
+insert into departamento (nombreDepartamento) values ('Cauca');
+insert into departamento (nombreDepartamento) values ('Cesar');
+insert into departamento (nombreDepartamento) values ('Choco');
+insert into departamento (nombreDepartamento) values ('Cordoba');
+insert into departamento (nombreDepartamento) values ('Cundinamarca');
+insert into departamento (nombreDepartamento) values ('Guainia');
+insert into departamento (nombreDepartamento) values ('Guaviare');
+insert into departamento (nombreDepartamento) values ('Huila');
+insert into departamento (nombreDepartamento) values ('La Guajira');
+insert into departamento (nombreDepartamento) values ('Magdalena');
+insert into departamento (nombreDepartamento) values ('Meta');
+insert into departamento (nombreDepartamento) values ('Narino');
+insert into departamento (nombreDepartamento) values ('Norte de Santander');
+insert into departamento (nombreDepartamento) values ('Putumayo');
+insert into departamento (nombreDepartamento) values ('Quindio');
+insert into departamento (nombreDepartamento) values ('Risaralda');
+insert into departamento (nombreDepartamento) values ('San Andres y Providencia');
+insert into departamento (nombreDepartamento) values ('Santander');
+insert into departamento (nombreDepartamento) values ('Sucre');
+insert into departamento (nombreDepartamento) values ('Tolima');
+insert into departamento (nombreDepartamento) values ('Valle del Cauca');
+insert into departamento (nombreDepartamento) values ('Vaupes');
+insert into departamento (nombreDepartamento) values ('Vichada');
+
+INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES (2,'Persona 2', 'Apellido 2',2, 24, 1234237890,1,1);
+INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES (3,'Persona 3', 'Apellido 3',2, 31, 1234367890,1,2);
+INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES (4,'Persona 4', 'Apellido 4',2, 32, 1234545890,1,3);
+INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES (5,'Persona 5', 'Apellido 5',2, 35, 1234515890,1,4);
+INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES (6,'Persona 6', 'Apellido 6',1, 24, 1234545890,1,5);
+INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES (7,'Persona 7', 'Apellido 7',1, 25, 1234568990,1,6);
+INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES (8,'Persona 8', 'Apellido 8',1, 36, 1234569890,1,7);
+INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES (9,'Persona 9', 'Apellido 9',0, 45, 1234563690,1,8);
+INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES (10,'Persona 10', 'Apellido 10',1, 25, 1237267890,1,9);
+
+INSERT INTO Municipio (nombre, area, presupuesto, gobernador,departamento) VALUES ('Municipio 2', 100.0, 100000, 2, 12);
+INSERT INTO Municipio (nombre, area, presupuesto, gobernador,departamento) VALUES ('Municipio 3', 100.0, 1003000, 3, 13);
+INSERT INTO Municipio (nombre, area, presupuesto, gobernador,departamento) VALUES ('Municipio 4', 100.0, 103000, 4, 14);
+INSERT INTO Municipio (nombre, area, presupuesto, gobernador,departamento) VALUES ('Municipio 5', 100.0, 1001000, 5, 15);
+INSERT INTO Municipio (nombre, area, presupuesto, gobernador,departamento) VALUES ('Municipio 6', 100.0, 1000500, 6, 16);
+INSERT INTO Municipio (nombre, area, presupuesto, gobernador,departamento) VALUES ('Municipio 7', 100.0, 1000400, 7, 17);
+INSERT INTO Municipio (nombre, area, presupuesto, gobernador,departamento) VALUES ('Municipio 8', 100.0, 1004000, 8, 18);
+INSERT INTO Municipio (nombre, area, presupuesto, gobernador,departamento) VALUES ('Municipio 9', 100.0, 1005000, 9, 19);
+INSERT INTO Municipio (nombre, area, presupuesto, gobernador,departamento) VALUES ('Municipio 10', 100.0, 1006000, 10, 20);
+
+INSERT INTO Vivienda (direccion ,capacidad, niveles, municipio, dueño) VALUES ('Direccion 1', 4, 1, 1,1);
+INSERT INTO Vivienda (direccion ,capacidad, niveles, municipio, dueño) VALUES ('Direccion 2', 5, 2, 2,2);
+INSERT INTO Vivienda (direccion ,capacidad, niveles, municipio, dueño) VALUES ('Direccion 3', 3, 1, 3,3);
+INSERT INTO Vivienda (direccion ,capacidad, niveles, municipio, dueño) VALUES ('Direccion 4', 4, 1, 4,4);
+INSERT INTO Vivienda (direccion ,capacidad, niveles, municipio, dueño) VALUES ('Direccion 5', 6, 2, 5,5);
+INSERT INTO Vivienda (direccion ,capacidad, niveles, municipio, dueño) VALUES ('Direccion 6', 7, 3, 6,6);
+INSERT INTO Vivienda (direccion ,capacidad, niveles, municipio, dueño) VALUES ('Direccion 7', 4, 3, 7,7);
+INSERT INTO Vivienda (direccion ,capacidad, niveles, municipio, dueño) VALUES ('Direccion 8', 3, 1, 8,8);
+INSERT INTO Vivienda (direccion ,capacidad, niveles, municipio, dueño) VALUES ('Direccion 9', 2, 1, 9,9);
+INSERT INTO Vivienda (direccion ,capacidad, niveles, municipio, dueño) VALUES ('Direccion 10', 4, 2, 10,10);
+
+INSERT INTO Persona_has_vivienda (Persona_id, Vivienda_id) VALUES (2, 2);
+INSERT INTO Persona_has_vivienda (Persona_id, Vivienda_id) VALUES (3, 3);
+INSERT INTO Persona_has_vivienda (Persona_id, Vivienda_id) VALUES (4, 4);
+INSERT INTO Persona_has_vivienda (Persona_id, Vivienda_id) VALUES (5, 5);
+INSERT INTO Persona_has_vivienda (Persona_id, Vivienda_id) VALUES (6, 6);
+INSERT INTO Persona_has_vivienda (Persona_id, Vivienda_id) VALUES (7, 7);
+INSERT INTO Persona_has_vivienda (Persona_id, Vivienda_id) VALUES (8, 8);
