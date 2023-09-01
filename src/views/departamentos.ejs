@@ -93,7 +93,7 @@
                 <th scope="row"><%= departamento.id %></th>
                 <th scope="row"><%= departamento.nombreDepartamento %></th>
                 <th scope="row">
-                  <a href="/update-departamento" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-departamento" class="btn btn-danger mt-auto">Borrar</a>
+                  <a href="/update-departamento/<%= departamento.id %>" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-departamento/<%= departamento.id %>" class="btn btn-danger mt-auto">Borrar</a>
                 </th>
               </tr>
             <% }) %>

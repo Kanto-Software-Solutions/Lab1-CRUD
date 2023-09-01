@@ -171,6 +171,17 @@ exports.select_upo = (req,res) => {
 	})
 }
 
+exports.listDepartamento = (req,res) => {
+	const id = req.params.id;
+	conexion.query('select * from departamento where id =?', [id] ,(error,results) => {
+		if(error){
+			throw error;
+		}else{
+			res.render('update-departamento', {departamento:results[0]});
+		}
+	})
+}
+
 //READ
 exports.listAllPersonas = (req,res) => {
 	conexion.query('select p.id, p.nombre , p.apellido, p.edad, p.telefono, d.nombreDepartamento, v.direccion as vivienda, p.cabeza_hogar from persona p, vivienda v, departamento d where d.id = p.departamento and p.vivienda = v.id order by p.id asc',(error,results) => {
@@ -237,7 +248,7 @@ exports.updatePersona = (req,res)=> {
 			console.log(error);
 		}else{
 			console.log('Se edito el usuario con ID: ' + id +' ap '+ nombre);
-			res.redirect('ver_personas'); //Lo voy a dejar aunque no tengo ni idea si funciona xD
+			res.redirect('personas'); 
 		}
 	});
 }
@@ -246,14 +257,14 @@ exports.updateDepartamento = (req,res) => {
 	const id					= req.body.id;
 	const nombreDepartamento	= req.body.nombreDepartamento;
 
-	let query0 = ('update departamento set nombreDepartamento = "' + nombreDepartamento + '" where id = ' + id);
+	let query0 = ('update departamento set nombreDepartamento = "' + nombreDepartamento + '" where id = ' + id[0]);
 	
 	conexion.query(query0, (error,results)=>{
 		if(error){
 			console.log(error);
 		}else{
 			console.log('Se edito el departamento: ' + nombreDepartamento);
-			res.redirect('ver_propietarios'); //Lo voy a dejar aunque no tengo ni idea si funciona xD
+			res.redirect('departamentos'); 
 		}
 	});
 }
@@ -266,14 +277,13 @@ exports.updateMunicipio = (req,res) => {
 	const gobernador	= req.body.gobernador;
 
 	let query = ('update municipio set nombre="'+nombre+'", area ='+area+', presupuesto= '+presupuesto+', gobernador = '+gobernador+' where id = '+id);
-	//Sin comillas para que concuerde con Script de Diana
 
 	conexion.query(query, (error,results)=>{
 		if(error){
 			console.log(error);
 		}else{
 			console.log('Se Actualizo el municipio ' + nombre +' ar '+ area+' pre ' + presupuesto +' gob ' + gobernador);
-			res.redirect('ver_municipios'); //Lo voy a dejar aunque no tengo ni idea si funciona xD
+			res.redirect('municipios'); 
 		}
 	});
 }
@@ -293,7 +303,7 @@ exports.updateVivienda = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se edito la vivienda id: '+id+' dir ' + direccion +' ub '+ ubicacion);
-			res.redirect('ver_viviendas'); //Lo voy a dejar aunque no tengo ni idea si funciona xD
+			res.redirect('viviendas');
 		}
 	});
 }
@@ -311,7 +321,7 @@ exports.updatePropietario = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se edito el propietario ' + persona_id +' ar '+ vivienda_id);
-			res.redirect('ver_propietarios'); //Lo voy a dejar aunque no tengo ni idea si funciona xD
+			res.redirect('propietarios');
 		}
 	});
 }
@@ -324,7 +334,7 @@ exports.deletePersona = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino la persona con ID' + id);
-			res.redirect('/ver_personas')
+			res.redirect('/personas')
 		}
 	});
 }
@@ -336,7 +346,7 @@ exports.deleteMunicipio = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino el municipio con ID' + id);
-			res.redirect('/ver_municipios')
+			res.redirect('/municipios')
 		}
 	});
 }
@@ -348,7 +358,7 @@ exports.deletePropietario = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino el propietario con ID' + id);
-			res.redirect('/ver_propietarios')
+			res.redirect('/propietarios')
 		}
 	});
 }
@@ -360,9 +370,20 @@ exports.deleteVivienda = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino la vivienda con ID' + id);
-			res.redirect('/ver_viviendas')
+			res.redirect('/viviendas')
 		}
 	});
+}
+
+exports.deleteDepartamentoRender = (req,res) => {
+	const id = req.params.id;
+	conexion.query('select * from departamento where id =?', [id] ,(error,results) => {
+		if(error){
+			throw error;
+		}else{
+			res.render('borrar-departamento', {departamento:results[0]});
+		}
+	})
 }
 
 exports.deleteDepartamento = (req,res) => {
@@ -372,7 +393,7 @@ exports.deleteDepartamento = (req,res) => {
 			console.log(error);
 		}else{
 			console.log('Se elimino el departamento con ID' + id);
-			res.redirect('/ver_departamentos') // (?)
+			res.redirect('/departamentos') // (?)
 		}
 	}
 	)
