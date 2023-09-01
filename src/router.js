@@ -1,7 +1,6 @@
-const express = require('express');
-const router = express.Router();
-
-const conexion = require('./controllers/db');
+const express = require('express');				//Usa express
+const router = express.Router();				//Var router
+const conexion = require('./controllers/db');	
 
 module.exports = router;
 
