@@ -20,8 +20,8 @@ router.get('/departamento1', (req, res) => {
 router.get('/departamento2', (req, res) => {
 	res.render('departamento2');
 });
-router.get('/departamento3', (req, res) => {
-	res.render('departamento3');
+router.get('/departamentos', (req, res) => {
+	crud.listAllDepartamentos(req,res);
 });
 router.get('/municipio', (req, res) => {
 	res.render('municipio');
@@ -32,8 +32,8 @@ router.get('/municipio1', (req, res) => {
 router.get('/municipio2', (req, res) => {
 	res.render('municipio2');
 });
-router.get('/municipio3', (req, res) => {
-	res.render('municipio3');
+router.get('/municipios', (req, res) => {
+	crud.listAllMunicipios(req,res);
 });
 router.get('/persona', (req, res) => {
 	res.render('persona');
@@ -44,9 +44,10 @@ router.get('/persona1', (req, res) => {
 router.get('/persona2', (req, res) => {
 	res.render('persona2');
 });
-router.get('/persona3', (req, res) => {
-	res.render('persona3');
+router.get('/personas', (req, res) => {
+	crud.listAllPersonas(req,res);
 });
+
 router.get('/crear-propietario', (req, res) => {
 	res.render('crear-propietario');
 });
@@ -71,6 +72,6 @@ router.get('/vivienda1', (req, res) => {
 router.get('/vivienda2', (req, res) => {
 	res.render('vivienda2');
 });
-router.get('/vivienda3', (req, res) => {
-	res.render('vivienda3');
+router.get('/viviendas', (req, res) => {
+	crud.listAllViviendas(req,res);
 });

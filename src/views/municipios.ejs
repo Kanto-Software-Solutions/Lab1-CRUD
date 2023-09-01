@@ -77,5 +77,34 @@
           </div>
         </div>
       </nav>
+      <div class="container">
+        <a href="/crear-municipio" class="btn btn-primary mt-4">Nuevo</a>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Area</th>
+              <th scope="col">Presupuesto</th>
+              <th scope="col">Gobernador</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% results.forEach((municipio)=> { %>
+              <tr>
+                <th scope="row"><%= municipio.id %></th>
+                <th scope="row"><%= municipio.nombre %></th>
+                <th scope="row"><%= municipio.area %></th>
+                <th scope="row"><%= municipio.presupuesto %></th>
+                <th scope="row"><%= municipio.gobernador %></th>
+                <th scope="row">
+                  <a href="/update-municipio" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-municipio" class="btn btn-danger mt-auto">Borrar</a>
+                </th>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
     </body>
 </html>

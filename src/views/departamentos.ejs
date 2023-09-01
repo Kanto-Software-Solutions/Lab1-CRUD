@@ -77,5 +77,28 @@
           </div>
         </div>
       </nav>
+      <div class="container">
+        <a href="/crear-departamento" class="btn btn-primary mt-4">Nuevo</a>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% results.forEach((departamento)=> { %>
+              <tr>
+                <th scope="row"><%= departamento.id %></th>
+                <th scope="row"><%= departamento.nombreDepartamento %></th>
+                <th scope="row">
+                  <a href="/update-departamento" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-departamento" class="btn btn-danger mt-auto">Borrar</a>
+                </th>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
     </body>
 </html>
