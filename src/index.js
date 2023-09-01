@@ -1,7 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const taskController = require('./controllers/taskController.js');
+const taskController = require('./controllers/taskController.js');  // Borrar
+const crud = require('./controllers/crud.js');
 
 //require("dotenv").config();
 const mysql =require("mysql2");
