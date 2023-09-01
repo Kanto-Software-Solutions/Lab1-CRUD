@@ -102,5 +102,58 @@
             </form>
         </div>
     </div>
+    <% if(persona) { %>
+      <div class="card m-4 mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <form class="m-4" action="/updatePersona" method="POST" >
+                <fieldset>
+                <legend style="text-align: center;">Persona Editar</legend>
+                <div class="form-group row">
+                </div>
+                <input id="id" name="id" value="<%= persona.id %>" hidden>
+                <div class="form-group">
+                  <label for="id" class="form-label mt-4">ID</label>
+                  <input type="number" name="id" class="form-control" id="id" aria-describedby="idHelp" value="<%= persona.id %>">
+                  <small id="idHelp" class="form-text text-muted">Ingresa el ID (Solo numeros)</small>
+                </div>
+                <div class="form-group">
+                  <label for="nombre" class="form-label mt-4">Escribe tus nombres</label>
+                  <input type="text" name="nombre" class="form-control" id="nombre" aria-describedby="apellidosHelp" value="<%= persona.nombre %>" value="<%= persona.id %>">
+                  <small id="nombresHelp" class="form-text text-muted">Recuerda que si excedes los 45 caracteres en los dos nombres, solo debes poner uno.</small>
+                </div>
+                <div class="form-group">
+                  <label for="apellido" class="form-label mt-4">Escribe tus apellidos</label>
+                  <input type="text" name="apellido" class="form-control" id="apellido" value="<%= persona.apellido %>" autocomplete="off">
+                  <small id="apellidosHelp" class="form-text text-muted">Recuerda que si excedes los 45 caracteres en los dos apellidos, solo debes poner uno.</small>
+                </div>        
+                <div class="form-group">
+                  <label for="sexo" class="form-label mt-4">Sexo (1 para hombre, 2 para mujer)</label>
+                  <input type="number" name="sexo" class="form-control" id="sexo" value="<%= persona.sexo %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="edad" class="form-label mt-4">Escribe tu edad</label>
+                  <input type="number" name="edad" class="form-control" id="edad" value="<%= persona.edad %>" autocomplete="off">
+                  <small id="edadHelp" class="form-text text-muted">Ingresa por favor la edad</small>
+                </div>
+                <div class="form-group">
+                  <label for="telefono" class="form-label mt-4">Escribe tu numero de telefono</label>
+                  <input type="tel" name="telefono" class="form-control" id="telefono" value="<%= persona.telefono %>" autocomplete="off">
+                  <small id="numeroHelp" class="form-text text-muted">Escribe en numeros tu numero de telefono</small>
+                </div>
+                <div class="form-group">
+                  <label for="vivienda" class="form-label mt-4">Escribe tu ID de vivienda</label>
+                  <input type="number" name="vivienda" class="form-control" id="vivienda" value="<%= persona.vivienda %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                  <label for="cabeza_hogar" class="form-label mt-4">Escribe la identificacion de la cabeza de hogar</label>
+                  <input type="number" name="cabeza_hogar" class="form-control" id="cabeza_hogar" value="<%= persona.responsable %>" autocomplete="off">
+                </div>
+                <h1> </h1>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                </fieldset>
+            </form>
+        </div>
+      </div>  
+    <% } %>
     </body>
 </html>

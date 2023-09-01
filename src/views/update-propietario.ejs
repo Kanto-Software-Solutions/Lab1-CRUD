@@ -77,5 +77,30 @@
           </div>
         </div>
       </nav>
+      <% if(propietario) { %>
+        <div class="card m-4 mx-auto" style="max-width: 500px;">
+          <div class="card-body">
+            <form class="m-4" action="/update-Propietario" method="POST">
+              <fieldset>
+                <legend style="text-align: center;">Propietarios editar</legend>
+                <div class="form-group row">
+                </div>
+                <div class="form-group">
+                  <label for="propietario_id" class="form-label mt-4">Identificación del dueño del inmueble</label>
+                  <input type="text" name="propietario_id" class="form-control" id="propietario_id" aria-describedby="persona_idpHelp" value="<%= propietario.propietario_id %>">
+                  <small id="propietario_idpHelp" class="form-text text-muted">Recuerda que la identifiación debe ser ingresada en numeros y debe estar previamente registrada.</small>
+                </div>
+                <div class="form-group">
+                  <label for="vivienda_id" class="form-label mt-4">Identificacion de la vivienda</label>
+                  <input type="text" name="vivienda_id" class="form-control" id="vivienda_id" value="<%= propietario.vivienda_id %>" autocomplete="off">
+                  <small id="vivienda_idHelp" class="form-text text-muted">Recuerda que la identificación debe ser ingresada en numeros y debe estar previamente registrada.</small>
+                </div>
+                <h1></h1>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      <% } %>
     </body>
 </html>
