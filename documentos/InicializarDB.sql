@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `lab1`.`municipio` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `lab1`.`persona` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `lab1`.`vivienda` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -151,13 +151,13 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Agregar primer registro
 -- -----------------------------------------------------
 INSERT INTO `lab1`.`persona` (id) 
-	VALUES ('0');
-INSERT INTO `lab1`.`departamento` (`nombreDepartamento`) 
-	VALUES ('NN');
-INSERT INTO `lab1`.`municipio` (`nombre`, `area`, `presupuesto`, `gobernador`, `departamento`) 
-	VALUES ("NN", 0, 0, 0, 0);
-INSERT INTO `lab1`.`vivienda` (`direccion`, `capacidad`, `niveles`, `municipio`, `dueño`) 
-	VALUES ("NN",1,1,0,0);
+	VALUES (0);
+INSERT INTO `lab1`.`departamento` (`id`,`nombreDepartamento` ) 
+	VALUES (0,'NN');
+INSERT INTO `lab1`.`municipio` (`id`,`nombre`, `area`, `presupuesto`, `gobernador`, `departamento`) 
+	VALUES (0,"NN", 0, 0, 0, 0);
+INSERT INTO `lab1`.`vivienda` (`id`,`direccion`, `capacidad`, `niveles`, `municipio`, `dueño`) 
+	VALUES (0,"NN",1,1,0,0);
 INSERT INTO `lab1`.`persona_has_vivienda` (`persona_id`,`vivienda_id`) 
 	VALUES (0,0);
 UPDATE `lab1`.`persona`
