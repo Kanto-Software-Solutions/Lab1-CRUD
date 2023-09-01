@@ -22,8 +22,8 @@ app.use(express.json());
 //Conexion bd
 const conexion=mysql.createConnection( {
     host: 'localhost',
-    user: 'root',
-    password: '123456',
+    user: 'webuser',
+    password: '1234',
     port: 3306,
     database: 'lab1'
 }, 'single');

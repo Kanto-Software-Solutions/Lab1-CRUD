@@ -1,7 +1,7 @@
 {
   "name": "lab1",
   "version": "1.0.0",
-  "description": "",
+  "description": "Desarrollo laboratorio 1 para la clase de Ingesoft 2-UNAL",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js"
@@ -16,7 +16,6 @@
     "express-myconnection": "^1.0.4",
     "jquery": "^3.7.0",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
     "mysql2": "^3.6.0",
     "nodemon": "^3.0.1"
   }
