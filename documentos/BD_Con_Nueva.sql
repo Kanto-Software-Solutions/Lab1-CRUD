@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `lab1`.`Municipio` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `area` FLOAT NULL,
-  `presupuesto` INT NULL,
+  `presupuesto` BIGINT NULL,
   `gobernador` INT NOT NULL,
   PRIMARY KEY (`id`))
   /*CONSTRAINT `gobernador`

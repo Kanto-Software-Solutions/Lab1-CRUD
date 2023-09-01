@@ -14,12 +14,12 @@ const { query } = require('express');
 
 // ------------------------------------- CREATE ------------------------------------------------------------------
 
-exports.createPerson = (req,res) =>{
-	const nombre = req.params.nombre;
-	const apellido = req.params.apellido;
-	const edad = req.params.edad;
-	const telefono = req.params.telefono;
-	const departamento = req.params.departamento;
+exports.createPersona = (req,res) =>{
+	const nombre = req.body.nombre;
+	const apellido = req.body.apellido;
+	const edad = req.body.edad;
+	const telefono = req.body.telefono;
+	const departamento = req.body.departamento;
 	conexion.query("INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ( '" + nombre + "' , '" + apellido + "' , '" + edad + "' , '" + telefono + "' , '" + departamento + "')", (error, results) => {
 		if(error){
 			console.log(error);
@@ -68,10 +68,8 @@ exports.createVivienda = (req, res) => {
 	const capacidad		= req.body.capacidad;
 	const niveles		= req.body.niveles;
 	const ubicacion		= req.body.ubicacion;
-	const persona_id 	= req.body.persona_id;
-	const departamento_id = req.body.departamento_id;
 
-	let query0 = ('INSERT INTO vivienda (direccion,capacidad,niveles,ubicacion) VALUES ("'+ direccion + ' , ' + capacidad + ' , ' + niveles + ' , ' + ubicacion+');SELECT LAST_INSERT_ID() as id') //Sin comillas para que concuerde con Script de Diana
+	let query0 = ('INSERT INTO vivienda (direccion,capacidad,niveles,ubicacion) VALUES ("'+ direccion + '" , ' + capacidad + ' , ' + niveles + ' , ' + ubicacion+')') //Sin comillas para que concuerde con Script de Diana
 	conexion.query(query0, (error,results)=>{
 		if(error){
 			console.log(error);
@@ -79,14 +77,14 @@ exports.createVivienda = (req, res) => {
 			var string=JSON.stringify(results);
 			var json =  JSON.parse(string);
 			console.log('Se creo la vivienda ' + direccion +' ub '+ ubicacion);
-			let query1 = ('INSERT INTO propietarios (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ json[0].insertId + ' , ' + departamento_id + ')');
+			/*let query1 = ('INSERT INTO propietarios (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ json[0].insertId + ' , ' + departamento_id + ')');
 			conexion.query(query1, (error,results)=>{
 				if(error){
 					console.log(error);
 				}else{
 					console.log('Se creó el propietario ' + persona_id +' ar '+ json[0].insertId);
 				}
-			});
+			});*/
 			res.redirect('/viviendas');
 		}
 	});

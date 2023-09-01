@@ -79,33 +79,33 @@
       </nav>
     <div class="card m-4 mx-auto" style="max-width: 500px;">
       <div class="card-body">
-        <form class="m-4" action="/add" method="post">
+        <form class="m-4" action="/createMunicipio" method="POST">
           <fieldset>
             <legend style="text-align: center;">Municipios</legend>
             <div class="form-group row">
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1" class="form-label mt-4">Nombre del municipio</label>
-              <input type="municipio" class="form-control" id="exampleInputmunicipio" aria-describedby="municipioHelp" placeholder="Ingresa por favor el nombre del municipio">
+              <label for="nombre" class="form-label mt-4">Nombre del municipio</label>
+              <input type="text" name="nombre" class="form-control" id="nombre" aria-describedby="municipioHelp" placeholder="Ingresa por favor el nombre del municipio">
               <small id="municipioHelp" class="form-text text-muted">Inserta por favor el nombre del municipio.</small>
             </div>
             <div class="form-group">
-              <label for="exampleInputarea1" class="form-label mt-4">Escriba el area en numeros</label>
-              <input type="area" class="form-control" id="exampleInputarea1" placeholder="Ingresa por favor el area del municipio" autocomplete="off">
+              <label for="area" class="form-label mt-4">Escriba el area en numeros</label>
+              <input type="text" name="area"  class="form-control" id="area" placeholder="Ingresa por favor el area del municipio" autocomplete="off">
               <small id="areaHelp" class="form-text text-muted">Por favor ingresa la cantidad numerica del area.</small>
             </div>
             <div class="form-group">
-              <label for="examplePresupuestp1" class="form-label mt-4">Escriba el presupuesto en numeros</label>
-              <input type="presupuesto" class="form-control" id="exampleInputPresupuesto1" placeholder="Ingresa por favor el presupuesto del municipio" autocomplete="off">
+              <label for="presupuesto" class="form-label mt-4">Escriba el presupuesto en numeros</label>
+              <input type="text" name="presupuesto" class="form-control" id="presupuesto" placeholder="Ingresa por favor el presupuesto del municipio" autocomplete="off">
               <small id="presupuestoHelp" class="form-text text-muted">Por favor ingresa la cantidad numerica del presupuesto.</small>
             </div>
             <div class="form-group">
-              <label for="exampleidentificacion1" class="form-label mt-4">Escriba la identificacion del gobernador</label>
-              <input type="identificacion" class="form-control" id="exampleInputidentificacion" placeholder="Ingresa por favor la identificacion del gobernador" autocomplete="off">
+              <label for="gobernador" class="form-label mt-4">Escriba la identificacion del gobernador</label>
+              <input type="text" name="gobernador" class="form-control" id="gobernador" placeholder="Ingresa por favor la identificacion del gobernador" autocomplete="off">
               <small id="identificacionHelp" class="form-text text-muted">Por favor ingresa la identificacion del gobernador.</small>
             </div>
             <h1> </h1>
-            <button type="enviar" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </fieldset>
         </form>
       </div>
