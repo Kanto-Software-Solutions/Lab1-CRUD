@@ -77,5 +77,47 @@
           </div>
         </div>
       </nav>
+
+      <% if(vivienda) { %>
+      <div class="card m-4 mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+          <form class="m-4" action="/updateVivienda" method="POST">
+            <fieldset>
+              <legend style="text-align: center;">Viviendas</legend>
+              <div class="form-group row">
+              </div>
+              <input id="id" name="id" value="<%= vivienda.id %>" hidden>
+              <div class="form-group">
+                <label for="direccion" class="form-label mt-4">Escribe la direccion de la vivienda</label>
+                <input type="text" name="direccion" class="form-control" id="direccion" aria-describedby="direccionHelp" value="<%= vivienda.direccion %>">
+                <small id="viviendaHelp" class="form-text text-muted">Recuerda escribir la direccion de la vivienda.</small>
+              </div>
+              <div class="form-group">
+                <label for="capacidad" class="form-label mt-4">Escribe por favor en números la capacidad (en cuanto a personas)</label>
+                <input type="number" name="capacidad" class="form-control" id="capacidad" value="<%= vivienda.capacidad %>" autocomplete="off">
+                <small id="capacidadHelp" class="form-text text-muted">Escribe por favor la capacidad de la vivienda (en cuanto a personas).</small>
+              </div>
+              <div class="form-group">
+                <label for="niveles" class="form-label mt-4">Escribe por favor en números cuantos pisos tiene la casa</label>
+                <input type="number" name="niveles" class="form-control" id="niveles" value="<%= vivienda.niveles %>" autocomplete="off">
+                <small id="pisosHelp" class="form-text text-muted">Recuerda que si tienes un piso destinado unicamente a terraza cuenta como nivel</small>
+              </div>
+              <div class="form-group">
+                <label for="municipio" class="form-label mt-4">Escribe por favor en números el código del municipio</label>
+                <input type="number" name="municipio" class="form-control" id="municipio" value="<%= vivienda.municipio %>" autocomplete="off">
+                <small id="municipioHelp" class="form-text text-muted">Escribe por favor el numero del id del municipio</small>
+              </div>
+              <div class="form-group">
+                <label for="dueño" class="form-label mt-4">Escribe por favor en números el documento del dueño</label>
+                <input type="number" name="dueño" class="form-control" id="dueño" value="<%= vivienda.dueño %>" autocomplete="off">
+                <small id="municipioHelp" class="form-text text-muted">Escribe por favor el numero del id del dueño</small>
+              </div>
+              <h1>          </h1>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <%  } %>
     </body>
 </html>

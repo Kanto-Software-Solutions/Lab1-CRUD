@@ -101,7 +101,7 @@
                 <th scope="row"><%= vivienda.municipio %></th>
                 <th scope="row"><%= vivienda.dueño %></th>
                 <th scope="row">
-                  <a href="/update-vivienda" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-vivienda" class="btn btn-danger mt-auto">Borrar</a>
+                  <a href="/update-vivienda/<%= vivienda.id %>" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-vivienda/<%= vivienda.id %>" class="btn btn-danger mt-auto">Borrar</a>
                 </th>
               </tr>
             <% }) %>

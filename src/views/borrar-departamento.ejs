@@ -78,31 +78,24 @@
         </div>
       </nav>
 
-      <% if(departamento) { %>
-        <div class="card m-4 mx-auto" style="max-width: 500px;">
-          <div class="card-body">
-              <form class="m-4" action="/deleteDepartamento" method="POST" >
-                  <fieldset>
-                  <legend style="text-align: center;">Departamento Editar</legend>
-                  <div class="form-group row">
-                  </div>
-                  <input id="id" name="id" value="<%= departamento.id %>" hidden>
-                  <div class="form-group">
+      <div class="card m-4 mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <form class="m-4" action="/deleteDepartamento" method="POST" >
+                <fieldset>
+                <legend style="text-align: center;">Departamento Editar</legend>
+                <div class="form-group row">
+                </div>
+                <input id="id" name="id" value="<%= departamento.id %>" hidden>
+                <div class="form-group">
                       <label for="id" class="form-label mt-4">Identificación del departamento</label>
-                      <input type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" value="<%= departamento.id %>">
-                      <small id="iddHelp" class="form-text text-muted">Recuerda que la identifiación debe ser única.</small>
-                  </div>
-                  <div class="form-group">
-                      <label for="nombreDepartamento" class="form-label mt-4">Nombre del departamento</label>
-                      <input type="text" name="nombreDepartamento" class="form-control" id="nombreDepartamento" value="<%= departamento.nombreDepartamento %>">
-                      <small id="idHelp" class="form-text text-muted">Recuerda que hay 32 departamentos en Colombia.</small>
+                      <input type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" value="<%= departamento.id %>" disabled>
+                      <small id="iddHelp" class="form-text text-muted">ESTAS SEGURO QUE QUIERES BORRAR?</small>
                   </div>
                   <h1> </h1>
-                  <button type="submit" class="btn btn-primary">Enviar</button>
+                  <button type="submit" class="btn btn-danger"> BORRAR </button>
                   </fieldset>
               </form>
           </div>
       </div>
-      <% } %>
     </body>
 </html>
