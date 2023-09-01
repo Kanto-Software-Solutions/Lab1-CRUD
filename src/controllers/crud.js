@@ -15,12 +15,15 @@ const { query } = require('express');
 // ------------------------------------- CREATE ------------------------------------------------------------------
 
 exports.createPersona = (req,res) =>{
+	const id = req.body.id;
 	const nombre = req.body.nombre;
 	const apellido = req.body.apellido;
+	const sexo = req.body.sexo;
 	const edad = req.body.edad;
 	const telefono = req.body.telefono;
-	const departamento = req.body.departamento;
-	conexion.query("INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ( '" + nombre + "' , '" + apellido + "' , '" + edad + "' , '" + telefono + "' , '" + departamento + "')", (error, results) => {
+	const vivienda = req.body.vivienda_id;
+	const responsable = req.body.responsable;
+	conexion.query("INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES ( '" + id + "' ,'" + nombre + "' , '" + apellido + "' ,'" + sexo + "' , '" + edad + "' , '" + telefono + "' , '" + vivienda + "', '" + responsable + "')", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
@@ -49,8 +52,9 @@ exports.createMunicipio = (req,res) => {
 	const area			= req.body.area;
 	const presupuesto	= req.body.presupuesto;
 	const gobernador	= req.body.gobernador;
+	const departamento = req.body.departamento;
 
-	let query = ('INSERT INTO municipio (nombre,area,presupuesto,gobernador) VALUES ("'+ nombre +'", '+ area +' , '+ presupuesto +' , '+ gobernador + ')') //Sin comillas para que concuerde con Script de Diana
+	let query = ('INSERT INTO municipio (nombre,area,presupuesto,gobernador,departamento) VALUES ("'+ nombre +'", '+ area +' , '+ presupuesto +' , '+ gobernador + ', '+ departamento + ')'); //Sin comillas para que concuerde con Script de Diana
 
 	conexion.query(query, (error,results)=>{
 		if(error){
@@ -66,16 +70,17 @@ exports.createVivienda = (req, res) => {
 	const direccion		= req.body.direccion;
 	const capacidad		= req.body.capacidad;
 	const niveles		= req.body.niveles;
-	const ubicacion		= req.body.ubicacion;
+	const municipio		= req.body.municipio;
+	const dueño 		= req.body.dueño;
 
-	let query0 = ('INSERT INTO vivienda (direccion,capacidad,niveles,ubicacion) VALUES ("'+ direccion + '" , ' + capacidad + ' , ' + niveles + ' , ' + ubicacion+')') //Sin comillas para que concuerde con Script de Diana
+	let query0 = ('INSERT INTO vivienda (direccion,capacidad,niveles,municipio, dueño) VALUES ("'+ direccion + '" , ' + capacidad + ' , ' + niveles + ' , ' + municipio+', ' + dueño+')'); //Sin comillas para que concuerde con Script de Diana
 	conexion.query(query0, (error,results)=>{
 		if(error){
 			console.log(error);
 		}else{
 			var string=JSON.stringify(results);
 			var json =  JSON.parse(string);
-			console.log('Se creo la vivienda ' + direccion +' ub '+ ubicacion);
+			console.log('Se creo la vivienda ' + direccion +' municipio '+ municipio);
 			/*let query1 = ('INSERT INTO propietarios (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ json[0].insertId + ' , ' + departamento_id + ')');
 			conexion.query(query1, (error,results)=>{
 				if(error){
@@ -92,9 +97,8 @@ exports.createVivienda = (req, res) => {
 exports.createPropietario = (req,res) => {
 	const persona_id		= req.body.persona_id;
 	const vivienda_id		= req.body.vivienda_id;
-	const departamento_id = req.body.departamento_id;
 
-	let query = ('INSERT INTO propietario (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ vivienda_id + ' , ' + departamento_id + ')')
+	let query = ('INSERT INTO Persona_has_vivienda (Persona_id , Vivienda_id) VALUES (' + persona_id + ' , '+ vivienda_id + ')');
 	conexion.query(query, (error,results)=>{
 		if(error){
 			console.log(error);
@@ -199,7 +203,7 @@ exports.listAllViviendas = (req,res) => {
 }
 
 exports.listAllMunicipios = (req,res) => {
-	conexion.query('select m.*, p.nombre as gobernador_n, p.apellido as gobernador_a from municipio m left join	persona p on m.gobernador = p.id;',(error,results) => {
+	conexion.query('select m.id, m.nombre, m.area, m.presupuesto, p.nombre as gobernador_n, p.apellido as gobernador_a, d.nombreDepartamento as departamento from municipio m left join persona p on m.gobernador = p.id, departamento d where m.departamento = d.id;',(error,results) => {
 		if(error){
 			throw error;
 		}else{
@@ -209,7 +213,7 @@ exports.listAllMunicipios = (req,res) => {
 }
 
 exports.listAllPropietarios = (req,res) => {
-	conexion.query('select po.*, p.nombre, p.apellido, v.direccion, d.nombreDepartamento from persona_has_vivienda po, persona p, vivienda v, departamento d where po.persona_id = p.id and po.vivienda_id = v.id',(error,results) => {
+	conexion.query('select po.*, p.nombre, p.apellido, v.direccion from persona_has_vivienda po, persona p, vivienda v where po.persona_id = p.id and po.vivienda_id = v.id',(error,results) => {
 		if(error){
 			throw error;
 		}else{
