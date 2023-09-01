@@ -3,7 +3,7 @@ const { error } = require('jquery');
 const conexion = require('../index');
 const { query } = require('express');
 
-//TODO: Actualizar sentencias, cambiar nombres de funciones por más representativos. Retornos de las funciones hacia front (algunas)
+//TODO: Actualizar sentencias, cambiar nombres de funciones por más representativos.
 /* CHANGELOG: 
 *       - Creé La Primera Query de Ejemplo que es un Create Persona
 *		- Reorganizé el Código para que siga el orden de CRUD
@@ -175,42 +175,52 @@ exports.select_upo = (req,res) => {
 }
 
 //READ
-exports.verp = (req,res) => {
+exports.listAllPersonas = (req,res) => {
 	conexion.query('select p.id, p.nombre , p.apellido, p.edad, p.telefono, s.sexo, v.direccion, h.nombre as responsable_n from persona p, sexo s, vivienda v, persona h where p.sexo = s.id and p.vivienda = v.id and p.cabeza_hogar = h.id order by p.id asc',(error,results) => {
 		if(error){
 			throw error;
 		}else{
 			res.render('ver_personas', {results:results});
 		}
-	})
+	});
 }
-exports.verv = (req,res) => {
-	var query = "select * from viviendas_con_dueno union table viviendas_sin_dueno order by id"
+exports.listAllViviendas = (req,res) => {
+	var query = "select * from viviendas_con_dueno union table viviendas_sin_dueno order by id";
 	conexion.query(query,(error,results) => {
 		if(error){
 			throw error;
 		}else{
 			res.render('ver_viviendas', {results:results});
 		}
-	})
+	});
 }
-exports.verm = (req,res) => {
+exports.listAllMunicipios = (req,res) => {
 	conexion.query('select m.*, p.nombre as gobernador_n, p.apellido as gobernador_a from municipio m left join	persona p on m.gobernador = p.id;',(error,results) => {
 		if(error){
 			throw error;
 		}else{
 			res.render('ver_municipios', {results:results});
 		}
-	})
+	});
 }
-exports.verpo = (req,res) => {
+exports.listAllPropietarios = (req,res) => {
 	conexion.query('select po.*, p.nombre, p.apellido, v.direccion from propietarios po, persona p, vivienda v where po.persona_id = p.id and po.vivienda_id = v.id order by po.id',(error,results) => {
 		if(error){
 			throw error;
 		}else{
 			res.render('ver_propietarios', {results:results});
 		}
-	})
+	});
+}
+
+exports.listAllDepartamentos = (req, res) => {
+	conexion.query('SELECT * FROM Departamentos', (error, results) => {
+		if(error){
+			throw error;
+		}else{
+			res.render('ver_departamentos', {results:results});
+		}
+	});
 }
 
 // ------------------------------------------ UPDATE -----------------------------------------------------
@@ -319,8 +329,7 @@ exports.deletep = (req,res) => {
 			console.log('Se elimino la persona con ID' + id);
 			res.redirect('/ver_personas')
 		}
-	}
-	)
+	});
 }
 exports.deletem = (req,res) => {
 	const id =  req.params.id;
@@ -331,8 +340,7 @@ exports.deletem = (req,res) => {
 			console.log('Se elimino el municipio con ID' + id);
 			res.redirect('/ver_municipios')
 		}
-	}
-	)
+	});
 }
 exports.deletepo = (req,res) => {
 	const id =  req.params.id;
@@ -343,8 +351,7 @@ exports.deletepo = (req,res) => {
 			console.log('Se elimino el propietario con ID' + id);
 			res.redirect('/ver_propietarios')
 		}
-	}
-	)
+	});
 }
 exports.deletev = (req,res) => {
 	const id =  req.params.id;
@@ -355,8 +362,7 @@ exports.deletev = (req,res) => {
 			console.log('Se elimino la vivienda con ID' + id);
 			res.redirect('/ver_viviendas')
 		}
-	}
-	)
+	});
 }
 
 exports.deleteDepartamento = (req,res) => {

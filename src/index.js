@@ -2,8 +2,13 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
+<<<<<<< HEAD
 const mysql =require("mysql2");
 const taskController = require('./controllers/taskController.js');
+=======
+const taskController = require('./controllers/taskController.js');  // Borrar
+const crud = require('./controllers/crud.js');
+>>>>>>> 269aa899e8d489fbbf8b7d4f55726ddf0acdca64
 
 //Configuraciones
 app.set('port', process.env.PORT || 3003); //Puerto del servidor por defecto def por el SO
