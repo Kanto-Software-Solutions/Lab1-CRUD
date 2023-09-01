@@ -85,9 +85,9 @@
               <th scope="col">ID</th>
               <th scope="col">Nombre</th>
               <th scope="col">Apellido</th>
+              <th scope="col">Sexo</th>
               <th scope="col">Edad</th>
               <th scope="col">Telefono</th>
-              <th scope="col">Departamento</th>
               <th scope="col">Vivienda</th>
               <th scope="col">Cabeza de Hogar</th>
               <th scope="col">Acciones</th>
@@ -99,13 +99,13 @@
                 <th scope="row"><%= persona.id %></th>
                 <th scope="row"><%= persona.nombre %></th>
                 <th scope="row"><%= persona.apellido %></th>
+                <th scope="row"><%= persona.sexo %></th>
                 <th scope="row"><%= persona.edad %></th>
                 <th scope="row"><%= persona.telefono %></th>
-                <th scope="row"><%= persona.nombreDepartamento %></th>
                 <th scope="row"><%= persona.vivienda %></th>
-                <th scope="row"><%= persona.cabeza_hogar %></th>
+                <th scope="row"><%= persona.responsable %></th>
                 <th scope="row">
-                  <a href="/update-persona" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-persona" class="btn btn-danger mt-auto">Borrar</a>
+                  <a href="/update-persona/<%= persona.id %>" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-persona/<%= persona.id %>" class="btn btn-danger mt-auto">Borrar</a>
                 </th>
               </tr>
             <% }) %>
