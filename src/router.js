@@ -1,6 +1,7 @@
 const express = require('express');				//Usa express
 const router = express.Router();				//Var router
-const conexion = require('./controllers/db');	
+const conexion = require('./controllers/db');
+const crud = require('./controllers/crud');	
 
 module.exports = router;
 
@@ -55,8 +56,8 @@ router.get('/propietario1', (req, res) => {
 router.get('/propietario2', (req, res) => {
 	res.render('propietario2');
 });
-router.get('/propietario3', (req, res) => {
-	res.render('propietario3');
+router.get('/propietarios', (req, res) => {
+	crud.listAllPropietarios(req, res); //SIUUUUUUUUUUUU
 });
 router.get('/vivienda', (req, res) => {
 	res.render('vivienda');
