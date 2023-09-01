@@ -208,7 +208,7 @@ exports.listAllPropietarios = (req,res) => {
 		if(error){
 			throw error;
 		}else{
-			res.render('ver_propietarios', {results:results});
+			res.render('propietarios', {results:results});
 		}
 	});
 }

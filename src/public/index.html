@@ -15,9 +15,10 @@
           margin-right: .5rem;
       }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.x.x/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.x.x/dist/js/bootstrap.min.js"></script>
 </head>
 
-</head>
 <body>
   <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
@@ -27,22 +28,50 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="/departamento">Departamentos
-              <span class="visually-hidden">(current)</span>
-            </a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Departamentos</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/crear-departamento">Insertar</a>
+              <a class="dropdown-item" href="/borrar-departamento">Borrar</a>
+              <a class="dropdown-item" href="/update-departamento">Actualizar</a>
+              <a class="dropdown-item" href="/departamentos">Ver</a>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/persona">Personas</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Personas</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/crear-persona">Insertar</a>
+              <a class="dropdown-item" href="/borrar-persona">Borrar</a>
+              <a class="dropdown-item" href="/update-persona">Actualizar</a>
+              <a class="dropdown-item" href="/personas">Ver</a>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/municipio">Municipios</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Municipios</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/crear-municipio">Insertar</a>
+              <a class="dropdown-item" href="/borrar-municipio">Borrar</a>
+              <a class="dropdown-item" href="/update-municipio">Actualizar</a>
+              <a class="dropdown-item" href="/municipios">Ver</a>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/vivienda">Vivienda</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Viviendas</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/crear-vivienda">Insertar</a>
+              <a class="dropdown-item" href="/borrar-vivienda">Borrar</a>
+              <a class="dropdown-item" href="/update-vivienda">Actualizar</a>
+              <a class="dropdown-item" href="/viviendas">Ver</a>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/propietario">Propietarios</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Propietarios</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/crear-propietario">Insertar</a>
+              <a class="dropdown-item" href="/borrar-propietario">Borrar</a>
+              <a class="dropdown-item" href="/update-propietario">Actualizar</a>
+              <a class="dropdown-item" href="/propietarios">Ver</a>
+            </div>
           </li>
         </ul>
       </div>
