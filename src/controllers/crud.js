@@ -15,12 +15,15 @@ const { query } = require('express');
 // ------------------------------------- CREATE ------------------------------------------------------------------
 
 exports.createPersona = (req,res) =>{
+	const id = req.body.id;
 	const nombre = req.body.nombre;
 	const apellido = req.body.apellido;
+	const sexo = req.body.sexo;
 	const edad = req.body.edad;
 	const telefono = req.body.telefono;
-	const departamento = req.body.departamento;
-	conexion.query("INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ( '" + nombre + "' , '" + apellido + "' , '" + edad + "' , '" + telefono + "' , '" + departamento + "')", (error, results) => {
+	const vivienda = req.body.vivienda_id;
+	const responsable = req.body.responsable;
+	conexion.query("INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES ( '" + id + "' ,'" + nombre + "' , '" + apellido + "' ,'" + sexo + "' , '" + edad + "' , '" + telefono + "' , '" + vivienda + "', '" + responsable + "')", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
