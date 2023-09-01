@@ -87,6 +87,7 @@
               <th scope="col">Capacidad</th>
               <th scope="col">Niveles</th>
               <th scope="col">Ubicacion</th>
+              <th scope="col">Dueño</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
@@ -97,7 +98,8 @@
                 <th scope="row"><%= vivienda.direccion %></th>
                 <th scope="row"><%= vivienda.capacidad %></th>
                 <th scope="row"><%= vivienda.niveles %></th>
-                <th scope="row"><%= vivienda.ubicacion %></th>
+                <th scope="row"><%= vivienda.municipio %></th>
+                <th scope="row"><%= vivienda.dueño %></th>
                 <th scope="row">
                   <a href="/update-vivienda" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-vivienda" class="btn btn-danger mt-auto">Borrar</a>
                 </th>

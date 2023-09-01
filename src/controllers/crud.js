@@ -183,7 +183,7 @@ exports.listDepartamento = (req,res) => {
 
 //READ
 exports.listAllPersonas = (req,res) => {
-	conexion.query('select p.id, p.nombre , p.apellido, p.edad, p.telefono, d.nombreDepartamento, v.direccion as vivienda, p.cabeza_hogar from persona p, vivienda v, departamento d where d.id = p.departamento and p.vivienda = v.id order by p.id asc',(error,results) => {
+	conexion.query('select p.id, p.nombre , p.apellido, p.sexo, p.edad, p.telefono, v.direccion as vivienda, p.responsable from persona p, vivienda v where p.vivienda = v.id order by p.id asc',(error,results) => {
 		if(error){
 			throw error;
 		}else{
@@ -191,8 +191,9 @@ exports.listAllPersonas = (req,res) => {
 		}
 	});
 }
+
 exports.listAllViviendas = (req,res) => {
-	var query = "select * from vivienda order by id";
+	var query = "select v.id, v.direccion, v.capacidad, v.niveles, m.nombre as municipio, p.nombre as dueño from vivienda v, municipio m, persona p where m.id = v.municipio and p.id = v.dueño order by id";
 	conexion.query(query,(error,results) => {
 		if(error){
 			throw error;
@@ -211,6 +212,7 @@ exports.listAllMunicipios = (req,res) => {
 		}
 	});
 }
+
 exports.listAllPropietarios = (req,res) => {
 	conexion.query('select po.*, p.nombre, p.apellido, v.direccion, d.nombreDepartamento from persona_has_vivienda po, persona p, vivienda v, departamento d where po.persona_id = p.id and po.vivienda_id = v.id',(error,results) => {
 		if(error){
