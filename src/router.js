@@ -47,9 +47,12 @@ router.get('/persona2', (req, res) => {
 router.get('/persona3', (req, res) => {
 	res.render('persona3');
 });
-router.get('/propietario', (req, res) => {
-	res.render('propietario');
+router.get('/crear-propietario', (req, res) => {
+	res.render('crear-propietario');
 });
+
+router.post('/createPropietario', crud.createPropietario);
+
 router.get('/propietario1', (req, res) => {
 	res.render('propietario1');
 });

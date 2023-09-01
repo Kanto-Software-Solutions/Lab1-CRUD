@@ -79,28 +79,28 @@
       </nav>
     <div class="card m-4 mx-auto" style="max-width: 500px;">
       <div class="card-body">
-        <form class="m-4" action="/add" method="post">
+        <form class="m-4" action="/createPropietario" method="POST">
           <fieldset>
             <legend style="text-align: center;">Propietarios</legend>
             <div class="form-group row">
             </div>
             <div class="form-group">
-              <label for="exampleInputidp1" class="form-label mt-4">Identificación del dueño del inmueble</label>
-              <input type="idp" class="form-control" id="exampleInputidp" aria-describedby="idpHelp" placeholder="Ingresa por favor la identificacion del dueño">
-              <small id="idpHelp" class="form-text text-muted">Recuerda que la identifiación debe ser ingresada en numeros y debe estar previamente registrada.</small>
+              <label for="persona_id" class="form-label mt-4">Identificación del dueño del inmueble</label>
+              <input type="text" name="persona_id" class="form-control" id="persona_id" aria-describedby="persona_idpHelp" placeholder="Ingresa por favor la identificacion del dueño">
+              <small id="persona_idpHelp" class="form-text text-muted">Recuerda que la identifiación debe ser ingresada en numeros y debe estar previamente registrada.</small>
             </div>
             <div class="form-group">
-              <label for="exampleInputidviv1" class="form-label mt-4">Identificacion de la vivienda</label>
-              <input type="idviv" class="form-control" id="exampleInputidviv1" placeholder="Ingresa por favor la identificacion de la vivienda" autocomplete="off">
-              <small id="idvivHelp" class="form-text text-muted">Recuerda que la identifiación debe ser ingresada en numeros y debe estar previamente registrada.</small>
+              <label for="vivienda_id" class="form-label mt-4">Identificacion de la vivienda</label>
+              <input type="text" name="vivienda_id" class="form-control" id="vivienda_id" placeholder="Ingresa por favor la identificacion de la vivienda" autocomplete="off">
+              <small id="vivienda_idHelp" class="form-text text-muted">Recuerda que la identifiación debe ser ingresada en numeros y debe estar previamente registrada.</small>
             </div>
             <div class="form-group">
-              <label for="exampleInputidviv1" class="form-label mt-4">Identificacion del departamento</label>
-              <input type="iddept" class="form-control" id="exampleInputiddept1" placeholder="Ingresa por favor la identificacion del departamento ubicada" autocomplete="off">
-              <small id="iddeptHelp" class="form-text text-muted">Recuerda que la identifiación debe ser ingresada en numeros y debe estar previamente registrada.</small>
+              <label for="departamento_id" class="form-label mt-4">Identificacion del departamento</label>
+              <input type="text" name="departamento_id" class="form-control" id="departamento_id" placeholder="Ingresa por favor la identificacion del departamento ubicada" autocomplete="off">
+              <small id="departamento_idHelp" class="form-text text-muted">Recuerda que la identifiación debe ser ingresada en numeros y debe estar previamente registrada.</small>
             </div>
             <h1></h1>
-            <button type="enviar" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </fieldset>
         </form>
       </div>

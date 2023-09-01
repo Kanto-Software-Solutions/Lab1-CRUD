@@ -10,7 +10,7 @@ app.set("port", process.env.PORT || 3003);			//Configura puerto a usar
 
 app.use(express.static(__dirname + "/public"));		//Carpeta de recursos publicos
 app.use(express.urlencoded({ extended: false }));	//???
-
+app.use(express.json());
 
 //---------------------------------------------------------------------------Puerto
 app.listen(app.get("port"), () => {

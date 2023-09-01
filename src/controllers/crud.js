@@ -97,13 +97,13 @@ exports.createPropietario = (req,res) => {
 	const vivienda_id		= req.body.vivienda_id;
 	const departamento_id = req.body.departamento_id;
 
-	let query = ('INSERT INTO propietarios (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ vivienda_id + ' , ' + departamento_id + ')')
+	let query = ('INSERT INTO propietario (Persona_id , Vivienda_id , Departamento_id) VALUES (' + persona_id + ' , '+ vivienda_id + ' , ' + departamento_id + ')')
 	conexion.query(query, (error,results)=>{
 		if(error){
 			console.log(error);
 		}else{
 			console.log('Se creo el propietario ' + persona_id +' ar '+ vivienda_id);
-			res.render('create_propietario',{results:results});
+			res.redirect('/propietarios');
 		}
 	});
 }
@@ -203,7 +203,7 @@ exports.listAllMunicipios = (req,res) => {
 	});
 }
 exports.listAllPropietarios = (req,res) => {
-	conexion.query('select po.*, p.nombre, p.apellido, v.direccion from propietarios po, persona p, vivienda v where po.persona_id = p.id and po.vivienda_id = v.id order by po.id',(error,results) => {
+	conexion.query('select po.*, p.nombre, p.apellido, v.direccion, d.nombreDepartamento from propietario po, persona p, vivienda v, departamento d where po.persona_id = p.id and po.vivienda_id = v.id and po.departamento_id = d.id order by po.id',(error,results) => {
 		if(error){
 			throw error;
 		}else{
