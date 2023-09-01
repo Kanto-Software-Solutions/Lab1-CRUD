@@ -304,12 +304,10 @@ exports.updateVivienda = (req,res) => {
 }
 
 exports.updatePropietario = (req,res) => {
-	const id			= req.body.id;
 	const persona_id	= req.body.persona_id;
 	const vivienda_id	= req.body.vivienda_id;
-	const departamento_id = req.body.departamento_id;
 	
-	let query0 = ('update persona_has_vivienda set  persona_id =' + persona_id + ', vivienda_id =' + vivienda_id + ', departamento_id =' + departamento_id + ' where id = ' + id);
+	let query0 = ('update persona_has_vivienda set  persona_id =' + persona_id + ', vivienda_id =' + vivienda_id[1] + ' where vivienda_id = ' + vivienda_id[1]);
 	
 	conexion.query(query0, (error,results)=>{
 		if(error){
@@ -381,11 +379,11 @@ exports.deleteViviendaRender = (req,res) => { //Para devolver el id al formulari
 
 exports.deletePropietario = (req,res) => {
 	const id =  req.body.id;
-	conexion.query('delete from propietario where id = '+ id , (error,results) =>{
+	conexion.query('delete from propietario where vivienda_id = '+ id , (error,results) =>{
 		if(error){
 			console.log(error);
 		}else{
-			console.log('Se elimino el propietario con ID' + id);
+			console.log('Se elimino la vivienda del propietario con ID' + id);
 			res.redirect('/propietarios')
 		}
 	});
