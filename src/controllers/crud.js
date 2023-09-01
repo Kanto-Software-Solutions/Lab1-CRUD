@@ -34,9 +34,12 @@ exports.createPersona = (req,res) =>{
 }
 
 exports.createDepartamento = (req,res) => {
+
 	const nombreDepartamento = req.body.nombreDepartamento;
 
 	let query = ('INSERT INTO departamento (nombreDepartamento) VALUES ("' + nombreDepartamento + '")');
+
+
 	conexion.query(query, (error,results)=>{
 		if(error){
 			console.log(error);
@@ -52,6 +55,7 @@ exports.createMunicipio = (req,res) => {
 	const area			= req.body.area;
 	const presupuesto	= req.body.presupuesto;
 	const gobernador	= req.body.gobernador;
+
 	const departamento = req.body.departamento;
 
 	let query = ('INSERT INTO municipio (nombre,area,presupuesto,gobernador,departamento) VALUES ("'+ nombre +'", '+ area +' , '+ presupuesto +' , '+ gobernador + ', '+ departamento + ')'); //Sin comillas para que concuerde con Script de Diana
@@ -71,9 +75,11 @@ exports.createVivienda = (req, res) => {
 	const capacidad		= req.body.capacidad;
 	const niveles		= req.body.niveles;
 	const municipio		= req.body.municipio;
+
 	const dueño 		= req.body.dueño;
 
 	let query0 = ('INSERT INTO vivienda (direccion,capacidad,niveles,municipio, dueño) VALUES ("'+ direccion + '" , ' + capacidad + ' , ' + niveles + ' , ' + municipio+', ' + dueño+')'); //Sin comillas para que concuerde con Script de Diana
+
 	conexion.query(query0, (error,results)=>{
 		if(error){
 			console.log(error);
@@ -98,7 +104,9 @@ exports.createPropietario = (req,res) => {
 	const persona_id		= req.body.persona_id;
 	const vivienda_id		= req.body.vivienda_id;
 
+
 	let query = ('INSERT INTO Persona_has_vivienda (Persona_id , Vivienda_id) VALUES (' + persona_id + ' , '+ vivienda_id + ')');
+
 	conexion.query(query, (error,results)=>{
 		if(error){
 			console.log(error);
