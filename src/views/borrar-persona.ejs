@@ -77,5 +77,26 @@
           </div>
         </div>
       </nav>
+
+      <div class="card m-4 mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <form class="m-4" action="/deletePersona" method="POST" >
+                <fieldset>
+                <legend style="text-align: center;">Persona Editar</legend>
+                <div class="form-group row">
+                </div>
+                <input id="id" name="id" value="<%= persona.id %>" hidden>
+                <div class="form-group">
+                  <label for="id" class="form-label mt-4">ID</label>
+                  <input type="number" name="id" class="form-control" id="id" aria-describedby="idHelp" value="<%= persona.id %>" disabled>
+                  <small id="idHelp" class="form-text text-muted">SEGURO QUE QUIERES BORRAR?</small>
+                </div>
+                <h1> </h1>
+                <button type="submit" class="btn btn-primary">Borrar</button>
+                </fieldset>
+            </form>
+        </div>
+      </div>
+
     </body>
 </html>

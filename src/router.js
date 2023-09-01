@@ -110,25 +110,25 @@ router.get('/borrar-departamento/:id', (req, res) => {
 router.post('/deleteDepartamento', crud.deleteDepartamento);
 
 router.get('/borrar-municipio/:id', (req, res) => {
-	res.render('borrar-municipio');
+	crud.deleteMunicipioRender(req, res);
 });
 
-router.post('/borrar-municipio', crud.deleteMunicipio)
+router.post('/deleteMunicipio', crud.deleteMunicipio)
 
 router.get('/borrar-vivienda/:id', (req, res) => {
-	res.render('borrar-vivienda');
+	crud.deleteViviendaRender(req, res);
 });
 
-router.post('/borrar-vivienda', crud.deleteVivienda)
+router.post('/deleteVivienda', crud.deleteVivienda)
 
 router.get('/borrar-persona/:id', (req, res) => {
-	res.render('borrar-persona');
+	crud.deletePersonaRender(req,res);
 });
 
-router.post('/borrar-persona', crud.deletePersona)
+router.post('/deletePersona', crud.deletePersona)
 
 router.get('/borrar-propietario/:id', (req, res) => {
-	res.render('borrar-propietario');
+	crud.deletePropietarioRender(req, res);
 });
 
-router.post('/borrar-propietario', crud.deletePropietario)
+router.post('/deletePropietario', crud.deletePropietario)

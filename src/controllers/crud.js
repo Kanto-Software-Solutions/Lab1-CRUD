@@ -23,7 +23,7 @@ exports.createPersona = (req,res) =>{
 	const telefono = req.body.telefono;
 	const vivienda = req.body.vivienda_id;
 	const responsable = req.body.responsable;
-	conexion.query("INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES ( '" + id + "' ,'" + nombre + "' , '" + apellido + "' ,'" + sexo + "' , '" + edad + "' , '" + telefono + "' , '" + vivienda + "', '" + responsable + "')", (error, results) => {
+	conexion.query("INSERT INTO Persona (id,nombre, apellido, sexo, edad, telefono, vivienda, responsable) VALUES ( '" + id + "' ,'" + nombre + "' , '" + apellido + "' ,'" + sexo + "' , '" + edad + "' , '" + telefono + "' , " + vivienda + ", " + responsable + ")", (error, results) => {
 		if(error){
 			console.log(error);
 		}else{
@@ -322,7 +322,7 @@ exports.updatePropietario = (req,res) => {
 // ---------------------------------------- DELETE --------------------------------------------
 exports.deletePersonaRender = (req,res) => { //Para devolver el id al formulario (renderer)
 	const id = req.params.id;
-	conexion.query('select * from vivienda where id =?', [id] ,(error,results) => {
+	conexion.query('select * from persona where id =?', [id] ,(error,results) => {
 		if(error){
 			throw error;
 		}else{
@@ -349,7 +349,7 @@ exports.deleteMunicipioRender = (req,res) => { //Para devolver el id al formular
 		if(error){
 			throw error;
 		}else{
-			res.render('borrar-municipio', {vivienda:results[0]});
+			res.render('borrar-municipio', {municipio:results[0]});
 		}
 	})
 }
@@ -366,9 +366,9 @@ exports.deleteMunicipio = (req,res) => {
 	});
 }
 
-exports.deleteViviendaRender = (req,res) => { //Para devolver el id al formulario (renderer)
+exports.deletePropietarioRender = (req,res) => { //Para devolver el id al formulario (renderer)
 	const id = req.params.id;
-	conexion.query('select * from vivienda where id =?', [id] ,(error,results) => {
+	conexion.query('select * from persona_has_vivienda where vivienda_id =?', [id] ,(error,results) => {
 		if(error){
 			throw error;
 		}else{
@@ -379,7 +379,7 @@ exports.deleteViviendaRender = (req,res) => { //Para devolver el id al formulari
 
 exports.deletePropietario = (req,res) => {
 	const id =  req.body.id;
-	conexion.query('delete from propietario where vivienda_id = '+ id , (error,results) =>{
+	conexion.query('delete from persona_has_vivienda where vivienda_id = '+ id , (error,results) =>{
 		if(error){
 			console.log(error);
 		}else{
