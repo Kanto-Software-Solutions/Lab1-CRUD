@@ -38,7 +38,6 @@ INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Pe
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 3', 'Apellido 3', 35, 1234567892, '3');
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 4', 'Apellido 4', 40, 1234567893, '4');
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 5', 'Apellido 5', 50, 1234567894, '5');
-use lab1;
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 6', 'Apellido 6', 31, 12934567890, '6');
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 7', 'Apellido 7', 22, 12834567891, '7');
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 8', 'Apellido 8', 35, 16234567892, '9');
@@ -58,30 +57,21 @@ INSERT INTO Municipio (nombre, area, presupuesto, gobernador) VALUES ('Municipio
 INSERT INTO Municipio (nombre, area, presupuesto, gobernador) VALUES ('Municipio 10', 500.0, 5000000, 10);
 
 use lab1;
---USEN ESTA SENTENCIA PARA SABER EN QUE NUMERO AUTOGUARDÓ EL ID MUNICIPIO, EL MIO QUEDÓ DE 4-13:
-Select * from Municipio;
 INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 1', 4, 1, 4);
 INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 2', 3, 1, 6);
 INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 3', 5, 2, 7);
 INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 4', 2, 1, 8);
 INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 5', 6, 3, 9);
 INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 6', 6, 3, 10);
-INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 7', 6, 3, 11);
-INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 8', 6, 3, 12);
-INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 9', 6, 3, 13);
 
 use lab1;
---USEN ESTA SENTENCIA PARA SABER EN QUE NUMERO AUTOGUARDÓ EL ID VIVIENDA:
-Select * from Vivienda;
---USEN ESTA SENTENCIA PARA SABER EN QUE NUMERO AUTOGUARDÓ EL ID DEPARTAMENTO:
-SELECT * FROM departamento;
-INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (1, 16, 2);
-INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (2, 17, 3);
-INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (3, 18, 4);
-INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (4, 28, 5);
-INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (5, 29, 6);
-INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (6, 30, 8);
-INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (7, 31, 7);
-INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (8, 31, 2);
-INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (9, 16, 3);
-INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (10, 18, 2);
+INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (1, 1, 2);
+INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (2, 2, 3);
+INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (3, 3, 4);
+INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (4, 4, 5);
+INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (5, 5, 6);
+INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (6, 6, 8);
+INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (7, 1, 7);
+INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (8, 2, 2);
+INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (9, 3, 3);
+INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (10, 4, 2);
