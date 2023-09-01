@@ -317,7 +317,7 @@ exports.updatePropietario = (req,res) => {
 }
 
 // ---------------------------------------- DELETE --------------------------------------------
-exports.deletep = (req,res) => {
+exports.deletePersona = (req,res) => {
 	const id =  req.params.id;
 	conexion.query('delete from persona where id = '+ id , (error,results) =>{
 		if(error){
@@ -329,7 +329,7 @@ exports.deletep = (req,res) => {
 	});
 }
 
-exports.deletem = (req,res) => {
+exports.deleteMunicipio = (req,res) => {
 	const id =  req.params.id;
 	conexion.query('delete from municipio where id = '+ id , (error,results) =>{
 		if(error){
@@ -341,7 +341,7 @@ exports.deletem = (req,res) => {
 	});
 }
 
-exports.deletepo = (req,res) => {
+exports.deletePropietario = (req,res) => {
 	const id =  req.params.id;
 	conexion.query('delete from propietario where id = '+ id , (error,results) =>{
 		if(error){
@@ -353,7 +353,7 @@ exports.deletepo = (req,res) => {
 	});
 }
 
-exports.deletev = (req,res) => {
+exports.deleteVivienda = (req,res) => {
 	const id =  req.params.id;
 	conexion.query('delete from vivienda where id = '+ id , (error,results) =>{
 		if(error){

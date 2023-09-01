@@ -71,43 +71,54 @@ router.get('/propietarios', (req, res) => {
 
 // ---------------------------- UPDATE ------------------------------
 
-router.get('/departamento1', (req, res) => {
-	res.render('departamento1');
-});
-router.get('/departamento2', (req, res) => {
-	res.render('departamento2');
+router.get('/update-departamento', (req, res) => {
+	res.render('update-departamento');
 });
 
-
-router.get('/municipio1', (req, res) => {
-	res.render('municipio1');
-});
-router.get('/municipio2', (req, res) => {
-	res.render('municipio2');
+router.get('/update-municipio', (req, res) => {
+	res.render('update-municipio');
 });
 
-
-router.get('/persona1', (req, res) => {
-	res.render('persona1');
-});
-router.get('/persona2', (req, res) => {
-	res.render('persona2');
+router.get('/update-vivienda', (req, res) => {
+	res.render('update-vivienda');
 });
 
-
-
-router.get('/propietario1', (req, res) => {
-	res.render('propietario1');
-});
-router.get('/propietario2', (req, res) => {
-	res.render('propietario2');
+router.get('/update-persona', (req, res) => {
+	res.render('update-persona');
 });
 
-
-router.get('/vivienda1', (req, res) => {
-	res.render('vivienda1');
-});
-router.get('/vivienda2', (req, res) => {
-	res.render('vivienda2');
+router.get('/update-propietario', (req, res) => {
+	res.render('update-propietario');
 });
 
+//------------------------------------- DELETE ------------------------------------
+
+router.get('/borrar-departamento', (req, res) => {
+	res.render('borrar-departamento');
+});
+
+router.delete('/borrar-departamento/:id', crud.deleteDepartamento)
+
+router.get('/borrar-municipio', (req, res) => {
+	res.render('borrar-municipio');
+});
+
+router.delete('/borrar-municipio/:id', crud.deleteDepartamento)
+
+router.get('/borrar-vivienda', (req, res) => {
+	res.render('borrar-vivienda');
+});
+
+router.delete('/borrar-vivienda/:id', crud.deleteDepartamento)
+
+router.get('/borrar-persona', (req, res) => {
+	res.render('borrar-persona');
+});
+
+router.delete('/borrar-persona/:id', crud.deleteDepartamento)
+
+router.get('/borrar-propietario', (req, res) => {
+	res.render('borrar-propietario');
+});
+
+router.delete('/borrar-propietario/:id', crud.deleteDepartamento)
