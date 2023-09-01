@@ -84,7 +84,7 @@ CREATE INDEX `cdh_idx` ON `lab1`.`Persona` (`cabeza_hogar` ASC) VISIBLE;
 
 CREATE INDEX `nombreDepartamento_idx` ON `lab1`.`Persona` (`departamento` ASC) VISIBLE;
 -------------------------------------------------------------------------------------------
-ALTER TABLE Municipio
+ALTER TABLE `lab1`.`Municipio`
 ADD CONSTRAINT `gobernador_id` FOREIGN KEY (`gobernador`)
 REFERENCES `lab1`.`Persona` (`id`)
 ON DELETE NO ACTION
