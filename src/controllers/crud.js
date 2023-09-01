@@ -175,7 +175,7 @@ exports.select_upo = (req,res) => {
 }
 
 //READ
-exports.verp = (req,res) => {
+exports.listAllPersonas = (req,res) => {
 	conexion.query('select p.id, p.nombre , p.apellido, p.edad, p.telefono, s.sexo, v.direccion, h.nombre as responsable_n from persona p, sexo s, vivienda v, persona h where p.sexo = s.id and p.vivienda = v.id and p.cabeza_hogar = h.id order by p.id asc',(error,results) => {
 		if(error){
 			throw error;
@@ -184,7 +184,7 @@ exports.verp = (req,res) => {
 		}
 	})
 }
-exports.verv = (req,res) => {
+exports.listAllViviendas = (req,res) => {
 	var query = "select * from viviendas_con_dueno union table viviendas_sin_dueno order by id"
 	conexion.query(query,(error,results) => {
 		if(error){
@@ -194,7 +194,7 @@ exports.verv = (req,res) => {
 		}
 	})
 }
-exports.verm = (req,res) => {
+exports.listAllMunicipios = (req,res) => {
 	conexion.query('select m.*, p.nombre as gobernador_n, p.apellido as gobernador_a from municipio m left join	persona p on m.gobernador = p.id;',(error,results) => {
 		if(error){
 			throw error;
@@ -203,7 +203,7 @@ exports.verm = (req,res) => {
 		}
 	})
 }
-exports.verpo = (req,res) => {
+exports.listAllPropietarios = (req,res) => {
 	conexion.query('select po.*, p.nombre, p.apellido, v.direccion from propietarios po, persona p, vivienda v where po.persona_id = p.id and po.vivienda_id = v.id order by po.id',(error,results) => {
 		if(error){
 			throw error;
