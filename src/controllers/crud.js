@@ -31,10 +31,9 @@ exports.createPersona = (req,res) =>{
 }
 
 exports.createDepartamento = (req,res) => {
-	const id_departamento = req.body.id //body o params?
 	const nombreDepartamento = req.body.nombreDepartamento;
 
-	let query = ('INSERT INTO departamento (id, nombreDepartamento) VALUES ( "' + id_departamento +  '", "' + nombreDepartamento + '")');
+	let query = ('INSERT INTO departamento (nombreDepartamento) VALUES ("' + nombreDepartamento + '")');
 	conexion.query(query, (error,results)=>{
 		if(error){
 			console.log(error);
@@ -202,6 +201,7 @@ exports.listAllViviendas = (req,res) => {
 		}
 	});
 }
+
 exports.listAllMunicipios = (req,res) => {
 	conexion.query('select m.*, p.nombre as gobernador_n, p.apellido as gobernador_a from municipio m left join	persona p on m.gobernador = p.id;',(error,results) => {
 		if(error){
@@ -212,7 +212,7 @@ exports.listAllMunicipios = (req,res) => {
 	});
 }
 exports.listAllPropietarios = (req,res) => {
-	conexion.query('select po.*, p.nombre, p.apellido, v.direccion, d.nombreDepartamento from propietario po, persona p, vivienda v, departamento d where po.persona_id = p.id and po.vivienda_id = v.id and po.departamento_id = d.id order by po.id',(error,results) => {
+	conexion.query('select po.*, p.nombre, p.apellido, v.direccion, d.nombreDepartamento from persona_has_vivienda po, persona p, vivienda v, departamento d where po.persona_id = p.id and po.vivienda_id = v.id',(error,results) => {
 		if(error){
 			throw error;
 		}else{
