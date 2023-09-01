@@ -105,23 +105,18 @@ exports.createPropietario = (req,res) => {
 	});
 }
 
-//READ-Update (?)
-exports.select_up = (req,res)=>{
+//----------------------- LISTAR SOLO 1 ENTRADA PARA REALIZAR UPDATE ----------------------
+exports.listPersona = (req,res)=>{
 	const id = req.params.id;
-	var queries = [
-		'select p.id as p_id, p.nombre, p.apellido from persona p',
-		'select v.id as v_id, v.direccion from vivienda v order by direccion asc',
-		'select * from persona where id = '+ id
-	]
-	conexion.query(queries.join(';'), (error,results)=>{
+	conexion.query('select * from persona where id =?', [id] ,(error,results) => {
 		if(error){
-			console.log(error);
+			throw error;
 		}else{
-			res.render('edit_persona',{results:results});
+			res.render('update-persona', {persona:results[0]});
 		}
-	}		
-	)
+	})
 }
+
 exports.select_um = (req,res) => {
 	const id = req.params.id;
 	var queries = [
@@ -238,13 +233,13 @@ exports.updatePersona = (req,res)=> {
 	const id 			= req.body.id;
 	const nombre		= req.body.nombre;
 	const apellido		= req.body.apellido;
+	const sexo			= req.body.sexo;
 	const edad			= req.body.edad;
-	const departamento	= req.body.departamento;
 	const telefono		= req.body.telefono;
 	const vivienda		= req.body.vivienda;
 	const cabeza_hogar	= req.body.cabeza_hogar;
 
-	let query = ('update persona set nombre="'+nombre+'",apellido="'+apellido+'", edad= "'+edad+'", telefono = "'+telefono+'", sexo = "'+departamento+'", vivienda = "'+vivienda+'", cabeza_hogar = "'+cabeza_hogar+'" where id ='+id );
+	let query = ('update persona set id =' + id[0] + ' , nombre="'+nombre+'",apellido="'+apellido+ '", sexo = '+ sexo +' , edad= '+edad+', telefono = '+telefono+', vivienda = '+vivienda+', responsable = '+cabeza_hogar +' where id ='+id[0] );
 	conexion.query(query,(error,results)=>{
 		if(error){
 			console.log(error);

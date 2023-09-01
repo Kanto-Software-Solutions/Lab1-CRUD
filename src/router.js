@@ -85,9 +85,11 @@ router.get('/update-vivienda', (req, res) => {
 	res.render('update-vivienda');
 });
 
-router.get('/update-persona', (req, res) => {
-	res.render('update-persona');
+router.get('/update-persona/:id', (req, res) => {
+	crud.listPersona(req,res);
 });
+
+router.post('/updatePersona', crud.updatePersona);
 
 router.get('/update-propietario', (req, res) => {
 	res.render('update-propietario');

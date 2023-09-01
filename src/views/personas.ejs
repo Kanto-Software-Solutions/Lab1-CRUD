@@ -105,7 +105,7 @@
                 <th scope="row"><%= persona.vivienda %></th>
                 <th scope="row"><%= persona.responsable %></th>
                 <th scope="row">
-                  <a href="/update-persona" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-persona" class="btn btn-danger mt-auto">Borrar</a>
+                  <a href="/update-persona/<%= persona.id %>" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-persona/<%= persona.id %>" class="btn btn-danger mt-auto">Borrar</a>
                 </th>
               </tr>
             <% }) %>
