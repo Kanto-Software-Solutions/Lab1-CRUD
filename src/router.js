@@ -1,13 +1,17 @@
-const express = require('express');
-const router = express.Router();
-
-const conexion = require('./index');
+const express = require('express');				//Usa express
+const router = express.Router();				//Var router
+const conexion = require('./controllers/db');	
 
 module.exports = router;
 
 router.get('/departamento', (req, res) => {
-	conexion.query()
-	res.render('departamento');
+	conexion.query('select * from departamento',(error,results)=>{
+		if(error){
+			throw error;
+		}else{
+			res.send(results);
+		}
+	})
 });
 router.get('/departamento1', (req, res) => {
 	res.render('departamento1');
@@ -65,10 +69,4 @@ router.get('/vivienda2', (req, res) => {
 });
 router.get('/vivienda3', (req, res) => {
 	res.render('vivienda3');
-});
-router.get('/taskController', (req, res) => {
-	res.render('taskController');
-});
-router.get('/index', (req, res) => {
-	res.render('index');
 });
