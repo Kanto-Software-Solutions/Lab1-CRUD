@@ -38,7 +38,6 @@ INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Pe
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 3', 'Apellido 3', 35, 1234567892, '3');
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 4', 'Apellido 4', 40, 1234567893, '4');
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 5', 'Apellido 5', 50, 1234567894, '5');
-
 use lab1;
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 6', 'Apellido 6', 31, 12934567890, '6');
 INSERT INTO Persona (nombre, apellido, edad, telefono, departamento) VALUES ('Persona 7', 'Apellido 7', 22, 12834567891, '7');
@@ -60,7 +59,7 @@ INSERT INTO Municipio (nombre, area, presupuesto, gobernador) VALUES ('Municipio
 
 use lab1;
 --USEN ESTA SENTENCIA PARA SABER EN QUE NUMERO AUTOGUARDÓ EL ID MUNICIPIO, EL MIO QUEDÓ DE 4-13:
---Select * from Municipio;
+Select * from Municipio;
 INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 1', 4, 1, 4);
 INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 2', 3, 1, 6);
 INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 3', 5, 2, 7);
@@ -72,13 +71,10 @@ INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direcci
 INSERT INTO Vivienda (direccion, capacidad, niveles, ubicacion) VALUES ('Direccion 9', 6, 3, 13);
 
 use lab1;
-
 --USEN ESTA SENTENCIA PARA SABER EN QUE NUMERO AUTOGUARDÓ EL ID VIVIENDA:
---Select * from Vivienda;
-
+Select * from Vivienda;
 --USEN ESTA SENTENCIA PARA SABER EN QUE NUMERO AUTOGUARDÓ EL ID DEPARTAMENTO:
---SELECT * FROM departamento;
-
+SELECT * FROM departamento;
 INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (1, 16, 2);
 INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (2, 17, 3);
 INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (3, 18, 4);
@@ -89,4 +85,3 @@ INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (7, 31
 INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (8, 31, 2);
 INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (9, 16, 3);
 INSERT INTO Propietario (Persona_id, Vivienda_id, Departamento_id) VALUES (10, 18, 2);
-

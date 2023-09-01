@@ -2,7 +2,7 @@
 -- Table `lab1`.`Departamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `lab1`.`Departamento` (
-  `id` INT NOT NULL, 
+  `id` INT NOT NULL,
   `nombreDepartamento` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -117,5 +117,3 @@ ENGINE = InnoDB;
 
 CREATE INDEX `fk_Persona_has_Vivienda_Vivienda1_idx` ON `lab1`.`Propietario` (`Vivienda_id` ASC) VISIBLE;
 CREATE INDEX `fk_Persona_has_Vivienda_Persona_idx` ON `lab1`.`Propietario` (`Persona_id` ASC) VISIBLE;
-
-
