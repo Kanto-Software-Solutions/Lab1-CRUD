@@ -76,6 +76,31 @@
             </ul>
           </div>
         </div>
-      </nav>
+    </nav>
+    <div class="container">
+      <a href="/crear-propietario" class="btn btn-primary mt-4">Nuevo</a>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Vivienda</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% results.foreach((propietario))=> { %>
+          <tr>
+            <th scope="row">nombre</th>
+            <th scope="row">apellido</th>
+            <th scope="row">direccion</th>
+            <th scope="row">departamento</th>
+            <th scope="row"><a href="/update-propietario" class="btn btn-primary mt-auto">Editar</a><a href="/borrar-propietario" class="btn btn-danger mt-auto">Borrar</a></th>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
     </body>
 </html>
