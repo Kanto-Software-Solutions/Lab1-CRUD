@@ -367,12 +367,12 @@ exports.deleteMunicipio = (req,res) => {
 }
 
 exports.deletePropietarioRender = (req,res) => { //Para devolver el id al formulario (renderer)
-	const id = req.params.id;
+	const id = req.params.vivienda_id;
 	conexion.query('select * from persona_has_vivienda where vivienda_id =?', [id] ,(error,results) => {
 		if(error){
 			throw error;
 		}else{
-			res.render('borrar-vivienda', {vivienda:results[0]});
+			res.render('borrar-propietario', {propietario:results[0]});
 		}
 	})
 }
