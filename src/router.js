@@ -5,16 +5,6 @@ const crud = require('./controllers/crud');
 
 module.exports = router;
 
-/*router.get('/departamento', (req, res) => {
-	conexion.query('select * from departamento',(error,results)=>{
-		if(error){
-			throw error;
-		}else{
-			res.send(results);
-		}
-	})
-});*/
-
 // ----------------------------- CREAR --------------------------------
 
 router.get('/crear-departamento', (req,res)=> {
